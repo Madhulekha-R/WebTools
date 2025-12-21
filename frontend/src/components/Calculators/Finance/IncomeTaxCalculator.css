@@ -1,0 +1,342 @@
+/* Input Field Styles */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #00cfff;
+    background: #18191a;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #00ff94;
+    box-shadow: 0 0 0 3px rgba(0, 255, 148, 0.1);
+}
+
+.form-input:hover {
+    border-color: #00ff94;
+}
+
+.input-with-prefix,
+.input-with-suffix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix,
+.input-suffix {
+    position: absolute;
+    color: #00cfff;
+    font-weight: 600;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.input-prefix {
+    left: 15px;
+}
+
+.input-suffix {
+    right: 15px;
+}
+
+.input-with-prefix .form-input {
+    padding-left: 35px;
+}
+
+.input-with-suffix .form-input {
+    padding-right: 45px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    color: #18191a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 148, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Introduction Text */
+.tax-intro {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Container */
+.tax-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.tax-section {
+    margin-bottom: 30px;
+}
+
+.tax-section-header {
+    background: linear-gradient(135deg, rgba(0, 255, 148, 0.2), rgba(0, 207, 255, 0.2));
+    color: #00ff94;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 15px 25px;
+    margin: 0 0 20px 0;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 255, 148, 0.3);
+}
+
+.tax-card {
+    background: #23272f;
+    border: 2.5px solid #00ff94;
+    border-radius: 22px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tax-section-title {
+    color: #00ff94;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+/* Tax Row */
+.tax-row {
+    display: grid;
+    grid-template-columns: 250px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tax-label {
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.tax-input {
+    max-width: 300px;
+}
+
+.tax-hint {
+    color: #6c757d;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.tax-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300cfff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 35px;
+}
+
+/* Radio Group */
+.tax-radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.tax-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.tax-radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #00ff94;
+}
+
+.tax-radio-label span {
+    color: #d6fce9;
+}
+
+/* College Inputs */
+.tax-college-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Button Group */
+.tax-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+    max-width: 400px;
+}
+
+.tax-clear-btn {
+    background: #6c757d !important;
+    color: #fff !important;
+}
+
+/* Results Section */
+.tax-results-container {
+    margin-top: 30px;
+}
+
+.tax-results-card {
+    border-color: #00cfff;
+}
+
+.tax-results-box {
+    background: rgba(0, 207, 255, 0.05);
+    border: 1px solid rgba(0, 207, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.tax-result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tax-result-row:last-child {
+    border-bottom: none;
+}
+
+.tax-result-row.highlight {
+    background: linear-gradient(135deg, rgba(0, 255, 148, 0.15), rgba(0, 207, 255, 0.15));
+    padding: 15px;
+    margin: -5px -5px 10px -5px;
+    border-radius: 8px;
+    border-bottom: none;
+}
+
+.tax-result-label {
+    color: #b0b3b8;
+    font-size: 0.95rem;
+}
+
+.tax-result-row.highlight .tax-result-label {
+    color: #00ff94;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.tax-result-value {
+    color: #00cfff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.tax-result-row.highlight .tax-result-value {
+    color: #00ff94;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tax-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .tax-hint {
+        grid-column: 1;
+    }
+
+    .tax-input {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .tax-card {
+        padding: 20px 25px;
+    }
+
+    .tax-section-header {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+
+    .tax-college-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .tax-button-group {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .tax-radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tax-section-title {
+        font-size: 1.2rem;
+    }
+
+    .tax-intro {
+        font-size: 0.9rem;
+    }
+
+    .tax-card {
+        padding: 15px 20px;
+    }
+
+    .tax-label {
+        font-size: 0.9rem;
+    }
+
+    .tax-hint {
+        font-size: 0.8rem;
+    }
+}

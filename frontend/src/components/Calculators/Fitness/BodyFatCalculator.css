@@ -1,0 +1,187 @@
+@import './BMICalculator.css';
+
+/* Body Fat Calculator specific styles */
+
+.bodyfat-expanded {
+    width: 500px;
+    max-width: 95%;
+}
+
+.bodyfat-expanded.with-results {
+    width: 850px;
+    max-width: 95%;
+}
+
+.bodyfat-results {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #00cfff;
+}
+
+.bodyfat-main-result {
+    margin-bottom: 25px;
+}
+
+.bodyfat-result-title {
+    color: #00ff94;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+/* Body Fat Percentage Bar */
+.bodyfat-bar {
+    position: relative;
+    display: flex;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0 10px 0;
+}
+
+.bodyfat-bar-segment {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.bodyfat-bar-segment.essential {
+    background: #8B0000;
+}
+
+.bodyfat-bar-segment.athletes {
+    background: #FF6B6B;
+}
+
+.bodyfat-bar-segment.fitness {
+    background: #4CAF50;
+}
+
+.bodyfat-bar-segment.average {
+    background: #FFA726;
+}
+
+.bodyfat-bar-segment.obese {
+    background: #D32F2F;
+}
+
+.bodyfat-indicator {
+    position: absolute;
+    top: -8px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.bodyfat-indicator-arrow {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #fff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.bodyfat-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    color: #b0b3b8;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.bodyfat-bar-labels span {
+    flex: 1;
+    text-align: center;
+}
+
+/* Results Table */
+.bodyfat-details {
+    margin-top: 20px;
+}
+
+.bodyfat-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bodyfat-table td {
+    padding: 12px;
+    border-bottom: 1px solid #00cfff;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.bodyfat-table td:first-child {
+    color: #b0b3b8;
+}
+
+.bodyfat-table td.bodyfat-value {
+    text-align: right;
+    color: #00ff94;
+    font-weight: 600;
+}
+
+.bodyfat-table tr:last-child td {
+    border-bottom: none;
+}
+
+.bodyfat-table tr:hover {
+    background: rgba(0, 207, 255, 0.05);
+}
+
+/* Reference Tables */
+.reference-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.reference-table thead {
+    background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+}
+
+.reference-table th {
+    padding: 12px;
+    text-align: left;
+    color: #18191a;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.reference-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #00cfff;
+    color: #b0b3b8;
+    font-size: 1rem;
+}
+
+.reference-table tbody tr:hover {
+    background: rgba(0, 207, 255, 0.1);
+}
+
+.reference-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 900px) {
+    .bodyfat-expanded.with-results {
+        width: 95%;
+    }
+
+    .bodyfat-bar-labels {
+        font-size: 0.75rem;
+    }
+
+    .bodyfat-table td,
+    .reference-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,105 @@
+/* Mode Selector */
+.loan-mode-selector {
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.loan-mode-btn {
+    padding: 12px 24px;
+    background: #23272f;
+    border: 2px solid #00ff94;
+    border-radius: 12px;
+    color: #b0b3b8;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.loan-mode-btn:hover {
+    background: rgba(0, 255, 148, 0.1);
+    color: #00ff94;
+}
+
+.loan-mode-btn.active {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    color: #18191a;
+    border-color: transparent;
+}
+
+/* Results Section */
+.loan-results-header {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    border-radius: 15px;
+    padding: 15px 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #18191a;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.loan-result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+}
+
+.loan-result-row:last-of-type {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.loan-result-row span:first-child {
+    color: #b0b3b8;
+}
+
+.loan-result-value {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #00cfff !important;
+}
+
+.loan-view-table-link {
+    color: #00cfff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid #00cfff;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.loan-view-table-link:hover {
+    color: #00ff94;
+    border-bottom-color: #00ff94;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .loan-mode-selector {
+        flex-direction: column;
+    }
+
+    .loan-mode-btn {
+        width: 100%;
+    }
+
+    .loan-result-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .loan-result-value {
+        font-size: 1.1rem;
+    }
+}

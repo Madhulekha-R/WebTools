@@ -1,0 +1,53 @@
+/* Auto Loan specific styles */
+.auto-loan-results-grid {
+    margin-bottom: 25px;
+}
+
+.auto-loan-result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.auto-loan-result-row:last-of-type {
+    border-bottom: none;
+}
+
+.auto-loan-result-row span:first-child {
+    color: #b0b3b8;
+}
+
+.auto-loan-result-value {
+    font-weight: 700;
+    color: #00cfff !important;
+}
+
+.auto-loan-total-row {
+    background: rgba(0, 207, 255, 0.1);
+    border-radius: 8px;
+    font-weight: 700;
+    margin-top: 10px;
+    border-bottom: none !important;
+}
+
+.auto-loan-total-row span {
+    color: #00cfff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .auto-loan-result-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 10px 15px;
+    }
+
+    .auto-loan-result-value {
+        font-size: 1rem;
+    }
+}

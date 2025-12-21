@@ -1,0 +1,273 @@
+/* Reusing percentage calculator styles */
+.due-date-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #c6f6ef;
+    margin: 0 auto 28px auto;
+    max-width: 900px;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+/* Instruction banner */
+.due-date-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #3a5a6a, #2a4a5a);
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.instruction-icon {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.instruction-text {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* Form layout */
+.due-date-form {
+    width: 100%;
+}
+
+.due-date-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.due-date-label {
+    min-width: 260px;
+    color: #c6f6ef;
+    font-size: 1.08rem;
+    font-weight: 550;
+    text-align: right;
+}
+
+.due-date-select {
+    width: 200px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 1.05rem;
+    background: #2a3f4f;
+    border: 1.7px solid #00cfff;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.due-date-select:focus {
+    outline: none;
+    border-color: #00ff94;
+    background: #2f4555;
+}
+
+.due-date-date-input {
+    width: 200px !important;
+    max-width: 250px !important;
+    padding: 8px 12px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.due-date-calc-btn {
+    min-width: 150px;
+    font-size: 1.08rem;
+    padding: 10px 24px;
+    margin-right: 10px;
+}
+
+.due-date-clear-btn {
+    min-width: 120px;
+    font-size: 1.08rem;
+    padding: 10px 24px;
+    background: linear-gradient(90deg, #6c757d, #5a6268) !important;
+    border: 1.7px solid #6c757d !important;
+}
+
+.due-date-clear-btn:hover {
+    background: linear-gradient(90deg, #5a6268, #545b62) !important;
+    border-color: #545b62 !important;
+}
+
+/* Results section */
+.due-date-results {
+    margin-top: 25px;
+    padding: 20px;
+    background: #1a2f2a;
+    border: 2px solid #00ff94;
+    border-radius: 10px;
+}
+
+.result-heading {
+    color: #00ff94;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.due-date-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.due-date-result-item {
+    background: #23272f;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.result-item-label {
+    color: #00cfff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-item-value {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .due-date-label {
+        min-width: 200px;
+        font-size: 1rem;
+    }
+
+    .due-date-select,
+    .due-date-date-input {
+        width: 180px !important;
+    }
+
+    .due-date-result-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .due-date-label {
+        min-width: 140px;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .due-date-select,
+    .due-date-date-input {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .due-date-row {
+        gap: 10px;
+    }
+
+    .due-date-intro {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .instruction-text {
+        font-size: 0.95rem;
+    }
+
+    .result-heading {
+        font-size: 1.2rem;
+    }
+
+    .result-item-label {
+        font-size: 0.85rem;
+    }
+
+    .result-item-value {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .due-date-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .due-date-label {
+        min-width: auto;
+        text-align: left;
+    }
+
+    .due-date-select,
+    .due-date-date-input {
+        width: 100% !important;
+    }
+
+    .due-date-instruction {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 15px;
+    }
+
+    .instruction-text {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .due-date-intro {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+    .due-date-results {
+        padding: 15px;
+    }
+
+    .result-heading {
+        font-size: 1.1rem;
+    }
+
+    .result-item-label {
+        font-size: 0.8rem;
+    }
+
+    .result-item-value {
+        font-size: 1rem;
+    }
+
+    .related-buttons {
+        flex-direction: column;
+    }
+
+    .related-btn {
+        width: 100%;
+    }
+
+    .percent-btn-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .due-date-calc-btn,
+    .due-date-clear-btn {
+        width: 100%;
+        margin: 0 !important;
+    }
+}

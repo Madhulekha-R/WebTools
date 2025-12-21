@@ -1,0 +1,98 @@
+.sgc-container {
+  background-color: #232323;
+  color: #e5e5ff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 480px;
+  margin: 4rem auto;
+  padding: 2.5rem 2.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 2px solid #00ff94;
+}
+.sgc-title {
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+.sgc-container p {
+  color: #a4cbff;
+  font-size: 1.14rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.sgc-input-container {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.sgc-input-container input {
+  padding: 0.8rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 16px;
+  border: 2.8px solid #00a6ff;
+  background: #18191c;
+  color: #b5d1fc;
+  outline: none;
+  width: 140px;
+  transition: border-color 0.23s ease, box-shadow 0.25s ease;
+}
+.sgc-input-container input::-webkit-inner-spin-button,
+.sgc-input-container input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.sgc-input-container input:focus {
+  border-color: #33c4ff;
+  background-color: #23242a;
+  color: #cde6ff;
+}
+.sgc-input-container button {
+  all: unset;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  color: #18191c;
+  font-weight: 600;
+  font-size: 1.14rem;
+  padding: 12px 36px;
+  border-radius: 14px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.25s ease, color 0.25s ease;
+  min-width: 140px;
+  text-align: center;
+}
+.sgc-input-container button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  color: #aaa;
+}
+.sgc-input-container button:hover:not(:disabled),
+.sgc-input-container button:focus:not(:disabled) {
+  background: linear-gradient(90deg, #00ccff 0%, #4cffb6 100%);
+  color: #16202b;
+}
+.sgc-error {
+  margin-top: 0.8rem;
+  color: #fc6060;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.sgc-result {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: #83a2ff;
+  font-size: 1.4rem;
+}
+.sgc-result strong {
+  color: #c0d8ff;
+}

@@ -1,0 +1,263 @@
+/* Reusing percentage calculator styles */
+.conception-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #c6f6ef;
+    margin: 0 auto 28px auto;
+    max-width: 900px;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+/* Instruction banner */
+.conception-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #3a5a6a, #2a4a5a);
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.instruction-icon {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.instruction-text {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* Form layout */
+.conception-form {
+    width: 100%;
+}
+
+.conception-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.conception-label {
+    min-width: 180px;
+    color: #c6f6ef;
+    font-size: 1.08rem;
+    font-weight: 550;
+    text-align: right;
+}
+
+.conception-select {
+    width: 200px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 1.05rem;
+    background: #2a3f4f;
+    border: 1.7px solid #00cfff;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.conception-select:focus {
+    outline: none;
+    border-color: #00ff94;
+    background: #2f4555;
+}
+
+.conception-date-input {
+    width: 200px !important;
+    max-width: 250px !important;
+    padding: 8px 12px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.conception-calc-btn {
+    min-width: 180px;
+    font-size: 1.08rem;
+    padding: 10px 24px;
+}
+
+/* Results section */
+.conception-results {
+    margin-top: 25px;
+    padding: 20px;
+    background: #1a2f2a;
+    border: 2px solid #00ff94;
+    border-radius: 10px;
+}
+
+.result-heading {
+    color: #00ff94;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.result-text {
+    color: #d6fce9;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.conception-date-result,
+.conception-range-result {
+    background: #23272f;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #c6f6ef;
+    font-size: 1.05rem;
+}
+
+.conception-date-result strong,
+.conception-range-result strong {
+    color: #00ff94;
+    margin-right: 8px;
+}
+
+/* Related calculators section */
+.related-calculators {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.related-title {
+    color: #00ff94;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.related-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.related-btn {
+    background: #3a5a6a;
+    color: #fff;
+    border: 1.7px solid #00cfff;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.related-btn:hover {
+    background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+    color: #18191a;
+    border-color: #00ff94;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+    .conception-label {
+        min-width: 140px;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .conception-select,
+    .conception-date-input {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .conception-row {
+        gap: 10px;
+    }
+
+    .conception-intro {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .instruction-text {
+        font-size: 0.95rem;
+    }
+
+    .result-heading {
+        font-size: 1.2rem;
+    }
+
+    .result-text {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .conception-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .conception-label {
+        min-width: auto;
+        text-align: left;
+    }
+
+    .conception-select,
+    .conception-date-input {
+        width: 100% !important;
+    }
+
+    .conception-instruction {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 15px;
+    }
+
+    .instruction-text {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .conception-intro {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+    .conception-results {
+        padding: 15px;
+    }
+
+    .result-heading {
+        font-size: 1.1rem;
+    }
+
+    .result-text {
+        font-size: 0.9rem;
+    }
+
+    .conception-date-result,
+    .conception-range-result {
+        font-size: 0.95rem;
+        padding: 10px 12px;
+    }
+
+    .related-buttons {
+        flex-direction: column;
+    }
+
+    .related-btn {
+        width: 100%;
+    }
+}

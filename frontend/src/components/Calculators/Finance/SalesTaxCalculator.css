@@ -1,0 +1,159 @@
+/* Input Field Styles */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #00cfff;
+    background: #18191a;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #00ff94;
+    box-shadow: 0 0 0 3px rgba(0, 255, 148, 0.1);
+}
+
+.form-input:hover {
+    border-color: #00ff94;
+}
+
+.input-with-prefix,
+.input-with-suffix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix,
+.input-suffix {
+    position: absolute;
+    color: #00cfff;
+    font-weight: 600;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.input-prefix {
+    left: 15px;
+}
+
+.input-suffix {
+    right: 15px;
+}
+
+.input-with-prefix .form-input {
+    padding-left: 35px;
+}
+
+.input-with-suffix .form-input {
+    padding-right: 45px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    color: #18191a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 148, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Introduction Text */
+.sales-tax-intro {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Container */
+.sales-tax-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.sales-tax-card {
+    background: #23272f;
+    border: 2.5px solid #00ff94;
+    border-radius: 22px;
+    padding: 30px 35px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.sales-tax-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button Group */
+.sales-tax-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.sales-tax-clear-btn {
+    background: #6c757d !important;
+    color: #fff !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sales-tax-card {
+        padding: 25px 25px;
+    }
+
+    .sales-tax-button-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .sales-tax-intro {
+        font-size: 0.9rem;
+    }
+
+    .sales-tax-card {
+        padding: 20px 20px;
+    }
+}

@@ -1,0 +1,327 @@
+.grade-calc-root {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #18191a;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.grade-calc-heading-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grade-calc-heading {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.grade-calc-heading1 {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.grade-calc-subheading {
+  color: #b0b3b8;
+  font-size: 1rem;
+  font-weight: 100;
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+}
+
+.grade-calc-card {
+  background: #23272f;
+  border: 2.5px solid #00ff94;
+  border-radius: 22px;
+  padding: 30px 40px;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.grade-final-card {
+  max-width: 500px;
+}
+
+.grade-calc-info {
+  background: #3b5998;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.grade-calc-form {
+  width: 100%;
+}
+
+.grade-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.grade-col-assignment { text-align: left; }
+
+.grade-assignment-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.grade-input-assignment, .grade-input-grade, .grade-input-weight {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #00cfff;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+}
+
+.grade-input-assignment {
+  text-align: left;
+}
+
+.grade-input-grade, .grade-input-weight {
+  text-align: center;
+}
+
+.grade-weight-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.grade-input-weight {
+  flex: 1;
+  padding-right: 25px;
+}
+
+.grade-percent-symbol {
+  position: absolute;
+  right: 10px;
+  color: #666;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.grade-add-assignment {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.grade-add-btn {
+  background: transparent;
+  color: #3b5998;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.grade-add-btn:hover {
+  color: #4a68ad;
+}
+
+/* Planning Section */
+.grade-planning-section {
+  background: #3b5998;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.grade-planning-header {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.grade-planning-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.grade-planning-label {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.grade-planning-input {
+  width: 150px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #00cfff;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.grade-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.grade-calc-btn, .grade-calc-planning-btn {
+  flex: 1;
+  background: linear-gradient(90deg,#00ff94,#21cbca,#00cfff);
+  color: #18191a;
+  font-weight: 700;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.grade-calc-planning-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.grade-calc-btn:hover, .grade-calc-planning-btn:hover {
+  opacity: 0.9;
+}
+
+.grade-clear-btn {
+  flex: 1;
+  background: #6c757d;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.grade-clear-btn:hover {
+  background: #5a6268;
+}
+
+.grade-result {
+  margin-top: 20px;
+  padding: 15px;
+  background: #00ff9422;
+  border: 1px solid #00ff94;
+  border-radius: 8px;
+  color: #00ff94;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Final Grade Calculator */
+.grade-final-form {
+  width: 100%;
+}
+
+.grade-final-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.grade-final-label {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  min-width: 180px;
+}
+
+.grade-final-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #00cfff;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Educational Content */
+.grade-content {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  color: #b0b3b8;
+  line-height: 1.8;
+}
+
+.grade-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.grade-conversion-table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  margin: 2rem auto;
+  background: #23272f;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.grade-conversion-table thead tr {
+  background: #3b5998;
+}
+
+.grade-conversion-table th {
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.grade-conversion-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.grade-conversion-table tr:nth-child(even) {
+  background: #2a2e35;
+}
+
+.grade-conversion-table tr:last-child td {
+  border-bottom: none;
+}

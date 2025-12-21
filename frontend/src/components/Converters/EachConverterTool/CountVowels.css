@@ -1,0 +1,196 @@
+.cv-outer-box {
+  background: #18191c;
+  min-height: 100vh;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.cv-main-container {
+  background: #23242a;
+  max-width: 760px;
+  width: 100%;
+  border-radius: 28px;
+  border: 2px solid #00ff94;
+  padding: 48px 36px 44px 36px;
+  color: #d3e0fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 44px auto 0 auto;
+}
+.cv-title {
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.3rem;
+  letter-spacing: 0.06em;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+.cv-desc {
+  font-size: 1.14rem;
+  font-weight: 500;
+  color: #a4cbff;
+  margin-bottom: 32px;
+  width: 100%;
+  text-align: center;
+}
+.cv-content-box {
+  max-width: 600px;
+  width: 100%;
+  background: transparent;
+  border-radius: 24px;
+  text-align: center;
+  margin: 0 auto;
+}
+.cv-input {
+  width: 95%;
+  max-width: 600px;
+  min-height: 130px;
+  margin: 1rem auto;
+  display: block;
+  border: 2.8px solid #00a6ff;
+  border-radius: 16px;
+  background: #18191c;
+  color: #b5d1fc;
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  padding: 18px 20px;
+  outline: none;
+  resize: vertical;
+  line-height: 1.55;
+  text-align: left;
+  transition: border-color 0.23s ease, background-color 0.22s ease, color 0.21s ease;
+  box-shadow: none;
+}
+.cv-input:focus {
+  border-color: #33c4ff;
+  background-color: #23242a;
+  color: #cde6ff;
+}
+.cv-count-display {
+  color: #f8f9ff;
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.cv-count-label {
+  color: #7facff;
+  font-size: 1.11rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.8rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.cv-stats-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  margin: 1.7rem 0 1.9rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+}
+.cv-stats-value {
+  color: #eee;
+  font-size: 1.4rem;
+  margin-bottom: 0.13rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+.cv-stats-label {
+  color: #77a3fa;
+  font-size: 0.93rem;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+.cv-btn-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+.cv-btn {
+  all: unset;
+  display: inline-block;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  color: #18191c;
+  border-radius: 14px;
+  font-size: 1.14rem;
+  font-weight: 600;
+  padding: 12px 36px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+  min-width: 140px;
+  flex-grow: 1;
+  max-width: 280px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: none;
+}
+.cv-btn:hover:not(:disabled),
+.cv-btn:focus:not(:disabled) {
+  background: linear-gradient(90deg, #00ccff 0%, #4cffb6 100%);
+  color: #16202b;
+  outline: none;
+  transform: scale(1.05);
+}
+.cv-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  color: #aaa;
+}
+.cv-summary-label {
+  color: #eaf6ff;
+  margin-top: 1.4rem;
+  text-align: center;
+  font-size: 1.11rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.cv-summary-table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #e5edfb;
+  font-size: 1.13rem;
+  font-family: inherit;
+}
+.cv-vowel-table {
+  margin: 0 auto;
+  color: #e5edfb;
+  border-collapse: collapse;
+  min-width: 155px;
+}
+.cv-vowel-table th,
+.cv-vowel-table td {
+  border-bottom: 1px solid #346eff;
+  padding: 8px 18px 8px 10px;
+  font-size: 1.11em;
+  text-align: left;
+}
+.cv-vowel-table th {
+  background: #232e44;
+  color: #73bcff;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.cv-vowel-table tr:last-child td {
+  border-bottom: none;
+}

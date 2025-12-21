@@ -1,0 +1,402 @@
+/* Reusing percentage calculator styles */
+.pace-intro,
+.multipoint-intro,
+.finish-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #c6f6ef;
+    margin: 0 auto 28px auto;
+    max-width: 900px;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+/* Tab styling */
+.pace-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00ff94;
+}
+
+.pace-tab {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: #2a3f4f;
+    color: #c6f6ef;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pace-tab:hover {
+    background: #2f4555;
+}
+
+.pace-tab.active {
+    background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+    color: #18191a;
+    border-bottom-color: #00ff94;
+    font-weight: 700;
+}
+
+/* Tab content */
+.pace-tab-content {
+    padding: 10px 0;
+}
+
+/* Pace calculator rows */
+.pace-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.pace-label {
+    min-width: 180px;
+    color: #c6f6ef;
+    font-size: 1.05rem;
+    font-weight: 550;
+}
+
+.pace-input {
+    width: 150px !important;
+    max-width: 180px !important;
+}
+
+.pace-select {
+    width: 140px;
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 1.05rem;
+    background: #2a3f4f;
+    border: 1.7px solid #00cfff;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.pace-select:focus {
+    outline: none;
+    border-color: #00ff94;
+    background: #2f4555;
+}
+
+.pace-select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.pace-event-select {
+    width: 200px;
+}
+
+.pace-hint {
+    color: #8fa;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.pace-note {
+    margin-top: 15px;
+    padding: 12px;
+    background: #1a2f2a;
+    border-left: 3px solid #00ff94;
+    color: #c6f6ef;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    border-radius: 4px;
+}
+
+.pace-result {
+    margin-top: 18px;
+    padding: 15px;
+    background: #1a2f2a;
+    border: 2px solid #00ff94;
+    border-radius: 8px;
+    color: #00ff94;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Multipoint table */
+.multipoint-table {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.multipoint-header {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 2px solid #00ff94;
+    margin-bottom: 10px;
+}
+
+.multipoint-col-num {
+    width: 50px;
+}
+
+.multipoint-col-label {
+    color: #00ff94;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-align: left;
+}
+
+.multipoint-row {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.multipoint-num {
+    color: #c6f6ef;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.multipoint-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.multipoint-input {
+    flex: 1;
+    min-width: 80px !important;
+    max-width: none !important;
+}
+
+.multipoint-select {
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.multipoint-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #00cfff;
+}
+
+/* Converter row */
+.converter-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.pace-eq {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #c6f6ef;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Pace table */
+.pace-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #23272f;
+    border: 2px solid #00cfff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.pace-table thead {
+    background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+}
+
+.pace-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #18191a;
+    border-bottom: 2px solid #00ff94;
+}
+
+.pace-table td {
+    padding: 10px 15px;
+    color: #c6f6ef;
+    border-bottom: 1px solid #2a3f4f;
+}
+
+.pace-table tbody tr:nth-child(even) {
+    background: #1a2228;
+}
+
+.pace-table tbody tr:hover {
+    background: #2a3f4f;
+}
+
+.pace-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+    .pace-label {
+        min-width: 120px;
+        font-size: 1rem;
+    }
+
+    .pace-input {
+        width: 130px !important;
+    }
+
+    .pace-select {
+        width: 120px;
+        font-size: 1rem;
+    }
+
+    .pace-event-select {
+        width: 100%;
+    }
+
+    .pace-row {
+        gap: 8px;
+    }
+
+    .multipoint-header,
+    .multipoint-row {
+        grid-template-columns: 40px 2fr 1fr;
+        gap: 10px;
+    }
+
+    .multipoint-input {
+        min-width: 60px !important;
+    }
+
+    .multipoint-select {
+        width: 110px;
+    }
+
+    .pace-intro,
+    .multipoint-intro,
+    .finish-intro {
+        font-size: 1rem;
+    }
+
+    .pace-table {
+        font-size: 0.9rem;
+    }
+
+    .pace-table th,
+    .pace-table td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .pace-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .pace-label {
+        min-width: auto;
+    }
+
+    .pace-input {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .pace-select {
+        width: 100%;
+    }
+
+    .pace-event-select {
+        width: 100%;
+    }
+
+    .pace-tabs {
+        flex-direction: column;
+    }
+
+    .pace-tab {
+        border-bottom: 1px solid #00cfff;
+    }
+
+    .pace-tab.active {
+        border-left: 4px solid #00ff94;
+        border-bottom: 1px solid #00cfff;
+    }
+
+    .converter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .multipoint-header {
+        display: none;
+    }
+
+    .multipoint-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+        background: #1a2228;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .multipoint-num {
+        margin-bottom: 8px;
+    }
+
+    .multipoint-inputs {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .multipoint-input,
+    .multipoint-select {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .multipoint-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pace-intro,
+    .multipoint-intro,
+    .finish-intro {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+    .pace-table {
+        font-size: 0.85rem;
+    }
+
+    .pace-table th,
+    .pace-table td {
+        padding: 6px 8px;
+    }
+}

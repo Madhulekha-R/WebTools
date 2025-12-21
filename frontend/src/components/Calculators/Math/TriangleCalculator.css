@@ -1,0 +1,165 @@
+/* Import shared styles from PercentageCalculator */
+@import './PercentageCalculator.css';
+
+/* Triangle Calculator specific styles */
+
+.triangle-card {
+    max-width: 1300px !important;
+}
+
+.triangle-description-text {
+    color: #d6fce9;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.triangle-diagram {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem 1.5rem;
+    background: #18191a;
+    border: 1.5px solid #00cfff;
+    border-radius: 12px;
+}
+
+.triangle-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.triangle-inputs-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.triangle-inputs-overlay input {
+    pointer-events: all;
+    position: absolute;
+    width: 60px;
+    padding: 6px 8px;
+    font-size: 1.05rem;
+    border-radius: 5px;
+    border: 1.5px solid #00cfff;
+    background: #23272f;
+    color: #fff;
+    text-align: center;
+}
+
+.triangle-inputs-overlay input:focus {
+    outline: none;
+    border-color: #00ff94;
+}
+
+/* Position inputs around the triangle - moved further from edges */
+.triangle-input-c {
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.triangle-input-b {
+    top: 35%;
+    left: 3%;
+}
+
+.triangle-input-a {
+    top: 35%;
+    right: 3%;
+}
+
+.triangle-input-angle-a {
+    bottom: 18%;
+    left: 3%;
+}
+
+.triangle-input-angle-b {
+    bottom: 18%;
+    right: 3%;
+}
+
+.triangle-input-side-c {
+    bottom: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.triangle-angle-unit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 1.5rem 0;
+}
+
+.triangle-select {
+    width: 150px !important;
+    max-width: 150px !important;
+    cursor: pointer;
+}
+
+.triangle-results {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: #18191a;
+    border: 1.5px solid #00ff94;
+    border-radius: 10px;
+}
+
+.triangle-results-title {
+    color: #00ff94;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.triangle-results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.triangle-result-item {
+    color: #fff;
+    font-size: 1.05rem;
+    padding: 0.5rem;
+    background: #23272f;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.rng-label {
+    color: #c6f6ef;
+    font-size: 1.08rem;
+    font-weight: 550;
+}
+
+@media (max-width: 700px) {
+    .triangle-diagram {
+        max-width: 100%;
+    }
+
+    .triangle-inputs-overlay input {
+        width: 50px;
+        font-size: 0.9rem;
+        padding: 4px 6px;
+    }
+
+    .triangle-results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .triangle-angle-unit {
+        flex-direction: column;
+    }
+}

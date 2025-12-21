@@ -1,0 +1,431 @@
+/* Input Field Styles */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #00cfff;
+    background: #18191a;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #00ff94;
+    box-shadow: 0 0 0 3px rgba(0, 255, 148, 0.1);
+}
+
+.form-input:hover {
+    border-color: #00ff94;
+}
+
+.input-with-prefix,
+.input-with-suffix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix,
+.input-suffix {
+    position: absolute;
+    color: #00cfff;
+    font-weight: 600;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.input-prefix {
+    left: 15px;
+}
+
+.input-suffix {
+    right: 15px;
+}
+
+.input-with-prefix .form-input {
+    padding-left: 35px;
+}
+
+.input-with-suffix .form-input {
+    padding-right: 50px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    color: #18191a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 148, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.amortization-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+    .amortization-container {
+        flex-direction: column;
+    }
+}
+
+.amortization-input-section {
+    flex: 1 1 600px;
+    max-width: 600px;
+}
+
+.amortization-results-section {
+    flex: 1 1 600px;
+    max-width: 600px;
+}
+
+.amortization-card {
+    background: #23272f;
+    border: 2.5px solid #00ff94;
+    border-radius: 22px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.amortization-results-card {
+    border-color: #00cfff;
+}
+
+.amortization-section-title {
+    color: #00ff94;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.amortization-subsection-title {
+    color: #21cbca;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.amortization-term-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.amortization-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300cfff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 35px;
+}
+
+.amortization-checkbox-wrapper {
+    margin: 20px 0;
+}
+
+.amortization-checkbox-label {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.amortization-checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #00ff94;
+}
+
+.amortization-checkbox-label span {
+    user-select: none;
+}
+
+.amortization-extra-section {
+    background: rgba(0, 255, 148, 0.05);
+    border: 1px solid rgba(0, 255, 148, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.amortization-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.amortization-clear-btn {
+    background: #6c757d !important;
+    color: #fff !important;
+}
+
+/* Results Section */
+.amortization-monthly-payment {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.amortization-payment-label {
+    display: block;
+    color: #18191a;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.amortization-payment-value {
+    display: block;
+    color: #18191a;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Pie Chart */
+.amortization-chart-container {
+    margin: 30px 0;
+}
+
+.amortization-pie-chart {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.amortization-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.amortization-legend-item {
+    display: flex;
+    align-items: center;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+}
+
+.amortization-legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* Summary Section */
+.amortization-summary {
+    background: rgba(0, 207, 255, 0.05);
+    border: 1px solid rgba(0, 207, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.amortization-summary-title {
+    color: #00cfff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.amortization-summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+}
+
+.amortization-summary-row:last-child {
+    border-bottom: none;
+}
+
+.amortization-summary-row span:first-child {
+    color: #b0b3b8;
+}
+
+.amortization-summary-row span:last-child {
+    font-weight: 600;
+    color: #00cfff;
+}
+
+/* Amortization Schedule */
+.amortization-schedule {
+    margin-top: 25px;
+}
+
+.amortization-schedule-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.amortization-tab {
+    flex: 1;
+    padding: 12px 20px;
+    background: rgba(0, 207, 255, 0.1);
+    border: 1px solid rgba(0, 207, 255, 0.3);
+    border-radius: 8px;
+    color: #00cfff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.amortization-tab:hover {
+    background: rgba(0, 207, 255, 0.2);
+}
+
+.amortization-tab.active {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    color: #18191a;
+    border-color: transparent;
+}
+
+.amortization-table {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.amortization-table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.2fr;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(0, 255, 148, 0.1);
+    color: #00ff94;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.amortization-table-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.amortization-table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.2fr;
+    gap: 10px;
+    padding: 12px 15px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+}
+
+.amortization-table-row:last-child {
+    border-bottom: none;
+}
+
+.amortization-table-row div {
+    text-align: left;
+}
+
+.amortization-table-row div:first-child {
+    font-weight: 600;
+    color: #00cfff;
+}
+
+/* Monthly table scrollbar styling */
+.amortization-monthly-table .amortization-table-body {
+    scrollbar-width: thin;
+    scrollbar-color: #00cfff rgba(0, 0, 0, 0.3);
+}
+
+.amortization-monthly-table .amortization-table-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.amortization-monthly-table .amortization-table-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.amortization-monthly-table .amortization-table-body::-webkit-scrollbar-thumb {
+    background: #00cfff;
+    border-radius: 4px;
+}
+
+.amortization-monthly-table .amortization-table-body::-webkit-scrollbar-thumb:hover {
+    background: #00ff94;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .amortization-table-header,
+    .amortization-table-row {
+        grid-template-columns: 0.8fr 1fr 1fr 1fr;
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .amortization-payment-value {
+        font-size: 2rem;
+    }
+
+    .amortization-summary-row {
+        font-size: 0.85rem;
+    }
+
+    .amortization-schedule-tabs {
+        flex-direction: column;
+    }
+
+    .amortization-tab {
+        width: 100%;
+    }
+}

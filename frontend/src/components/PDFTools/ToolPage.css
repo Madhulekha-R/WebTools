@@ -1,0 +1,399 @@
+.tool-page {
+  background: #18191a;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.tool-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.tool-container h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 80%, #21cbf3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.tool-description {
+  font-size: 1.12rem;
+  color: #66ffe2;
+  margin-bottom: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.enhanced-upload-area {
+  border: 2.5px dashed #00ff94;
+  border-radius: 16px;
+  background: rgba(10, 28, 24, 0.78);
+  padding: 48px 20px 32px 20px;
+  margin-bottom: 2rem;
+  transition: border-color 0.18s, background 0.18s;
+  position: relative;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.enhanced-upload-area.drag-active {
+  border-color: #00cfff;
+  background: rgba(0, 207, 255, 0.11);
+}
+
+.upload-icon {
+  font-size: 2.4rem;
+  color: #7cf8e8;
+  margin-bottom: 12px;
+}
+
+.select-file-button {
+  background: linear-gradient(90deg, #00cfff 0%, #00ff94 100%);
+  color: #18191a;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 40px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 0;
+  transition: background 0.22s, transform 0.22s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.3px;
+}
+.select-file-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.select-file-button:hover:enabled {
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.select-file-button .MuiSvgIcon-root {
+  margin-right: 8px;
+  font-size: 1.4em;
+}
+
+.drop-hint {
+  color: #72ffe6;
+  font-size: 1rem;
+  margin-top: 9px;
+  opacity: 0.93;
+}
+
+.enhanced-selected-files {
+  background: rgba(12, 30, 22, 0.94);
+  border-radius: 14px;
+  padding: 24px 18px;
+  margin-top: 20px;
+  animation: fadeIn 0.48s;
+  border: 1.4px solid #00ff9477;
+}
+
+.enhanced-selected-files h3 {
+  color: #00ff94;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enhanced-selected-files ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: rgba(0,255,148,0.07);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 1rem;
+  position: relative;
+  justify-content: space-between;
+}
+
+.file-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-icon {
+  margin-left: 8px;
+  font-size: 1.2em;
+  color: #00cfff;
+}
+
+.file-name {
+  margin-right: 8px;
+}
+
+.file-size {
+  margin-right: 8px;
+  opacity: 0.8;
+  font-size: 0.98em;
+  color: #38e0ac;
+}
+
+.remove-file-btn {
+  background: none;
+  border: none;
+  color: #ff5c8d;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+
+.remove-file-btn:hover {
+  background: #006e5b77;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.converted-file-bar {
+  background: #1b2f2e;
+  border-radius: 8px;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+  min-width: 280px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1.4px solid #00ff94;
+}
+
+.converted-file-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 1.07rem;
+  color: #00cfff;
+}
+
+.converted-file .file-name {
+  font-weight: 600;
+}
+
+.converted-file .file-size {
+  opacity: 0.82;
+  font-size: 0.98em;
+  color: #21cbf3;
+}
+
+.converted-file .file-icon {
+  font-size: 1.3em;
+  color: #00ff94;
+}
+
+.download-button {
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  color: #1c1a21;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.19s;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.download-button:hover {
+  transform: translateY(-2.5px);
+  color: #1c1a21;
+}
+
+.convert-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.process-button {
+  background: linear-gradient(90deg, #00cfff 0%, #00ff94 100%);
+  color: #18191a;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #00cfff22;
+  transition: background 0.23s, transform 0.22s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.11px;
+}
+.process-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.process-button:hover:enabled {
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.crop-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 8px;
+  margin-top: 10px;
+}
+
+.crop-fields label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #72ffe6;
+  font-size: 1rem;
+  font-weight: 600;
+  background: none;
+  margin: 0 4px;
+}
+
+.crop-fields input[type="number"] {
+  background: #052d2a;
+  color: #00ff94;
+  border: 1.5px solid #00ff94;
+  border-radius: 5px;
+  padding: 5px 12px;
+  font-size: 1.07rem;
+  margin-top: 4px;
+  outline: none;
+  width: 80px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.crop-fields input[type="number"]:focus {
+  border-color: #00cfff;
+  background: #012724;
+}
+
+.crop-fields small {
+  color: #22ffe4;
+  font-size: 0.97rem;
+  margin-top: 7px;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.redact-fields {
+  margin-bottom: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.redact-fields label {
+  color: #72ffe6;
+  font-weight: 600;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.redact-fields input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: 1.5px solid #00ff94;
+  background-color: #02211c;
+  color: #00ff94;
+  outline: none;
+  transition: border-color 0.22s, background-color 0.21s;
+}
+
+.redact-fields input[type="text"]:focus {
+  border-color: #00cfff;
+  background-color: #012724;
+}
+
+.redact-fields small {
+  color: #22ffe4;
+  font-size: 0.91rem;
+  margin-top: 5px;
+  display: block;
+  text-align: center;
+}
+
+/* Add to ToolPage.css or your component's CSS module */
+
+.rotation-angle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 28px 0 22px 0;
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  font-size: 1.14rem;
+}
+
+.rotation-angle-label {
+  color: #7cf8e8;
+  font-weight: 600;
+  margin-right: 12px;
+  letters-spacing: 0.04em;
+}
+
+.rotation-angle-select {
+  border: 1.6px solid #00ff94;
+  background: #021712;
+  color: #00ff94;
+  border-radius: 6px;
+  padding: 7px 18px 7px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color .18s, background .17s, box-shadow .13s;
+  outline: none;
+}
+
+.rotation-angle-select:focus {
+  border-color: #00cfff;
+  background: #012724;
+  color: #00cfff;
+}
+
+/* Optional: make options neon as well in WebKit browsers */
+.rotation-angle-select option {
+  background: #15201b;
+  color: #00ff94;
+}

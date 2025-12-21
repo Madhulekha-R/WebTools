@@ -1,0 +1,125 @@
+.cap-converter-container {
+  background: #23242a;
+  min-height: 100vh;
+  max-width: 750px;
+  margin: 42px auto 0 auto;
+  border-radius: 28px;
+  padding: 44px 32px 40px 32px;
+  box-shadow: none;
+  border: 2px solid #00ff94;
+}
+.cap-title {
+  font-size: 2.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 0.45rem;
+  margin-top: 0;
+}
+.cap-desc {
+  color: #bfc9d9;
+  font-size: 1.14rem;
+  margin-bottom: 32px;
+  font-weight: 500;
+  text-align: center;
+}
+.cap-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.cap-button-row button {
+  background: #18191c;
+  color: #00cfff;
+  font-size: 0.96rem;
+  font-weight: 600;
+  border: 2px solid #00cfff;
+  border-radius: 11px;
+  padding: 0.64rem 1.04rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.17s, color 0.14s, border-color 0.14s;
+  box-shadow: none;
+}
+.cap-button-row button.active,
+.cap-button-row button:focus {
+  background: linear-gradient(90deg, #00cfff 0%, #00ff94 100%);
+  color: #18191c;
+  border: 2px solid #00ff94;
+  outline: none;
+}
+.cap-button-row button:hover {
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  color: #18191c;
+  border: 2px solid #00ff94;
+}
+.cap-input, .cap-output {
+  width: 95%;
+  max-width: 600px;
+  min-height: 92px;
+  margin: 0.9rem auto;
+  display: block;
+  border: 2.3px solid #00cfff;
+  border-radius: 13px;
+  background: #18191c;
+  color: #bfc9d9;
+  font-size: 1.18rem;
+  padding: 13px 19px;
+  outline: none;
+  text-align: left;
+  resize: vertical;
+  box-shadow: none;
+  transition: border-color 0.17s, background 0.14s, color 0.13s;
+}
+.cap-input:focus, .cap-output:focus {
+  border-color: #00ff94;
+  background: #23242a;
+  color: #fff;
+}
+.cap-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00cfff;
+  font-size: 2.1rem;
+  margin: 1.3rem 0 1.1rem 0;
+}
+.cap-btn-row {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+.cap-clear-btn,
+.cap-copy-btn {
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  color: #18191c;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  padding: 11px 36px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: none;
+  display: inline-block;
+  transition: background 0.14s, color 0.14s;
+}
+.cap-clear-btn:hover,
+.cap-copy-btn:not(:disabled):hover {
+  background: linear-gradient(90deg, #00cfff 0%, #00ff94 100%);
+  color: #18191c;
+}
+.cap-copy-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  color: #aaa;
+}

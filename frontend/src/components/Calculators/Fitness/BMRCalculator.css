@@ -1,0 +1,111 @@
+@import './BMICalculator.css';
+
+/* BMR Calculator specific styles */
+
+.bmr-expanded {
+    width: 500px;
+    max-width: 95%;
+}
+
+.bmr-expanded.with-results {
+    width: 800px;
+    max-width: 95%;
+}
+
+.bmr-results {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #00cfff;
+}
+
+.bmr-main-result {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.bmr-result-title {
+    color: #00ff94;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.bmr-activity-section {
+    margin-top: 20px;
+}
+
+.bmr-section-subtitle {
+    color: #00cfff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.bmr-activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.bmr-activity-table thead {
+    background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+}
+
+.bmr-activity-table th {
+    padding: 12px;
+    text-align: left;
+    color: #18191a;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.bmr-activity-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #00cfff;
+    color: #b0b3b8;
+    font-size: 1rem;
+}
+
+.bmr-activity-table td.bmr-calorie-value {
+    text-align: right;
+    color: #fff;
+    font-weight: 600;
+}
+
+.bmr-activity-table tbody tr:hover {
+    background: rgba(0, 207, 255, 0.1);
+}
+
+.bmr-activity-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.bmr-exercise-note {
+    background: rgba(0, 207, 255, 0.05);
+    border-left: 3px solid #00cfff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.bmr-exercise-note p {
+    color: #b0b3b8;
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.bmr-exercise-note b {
+    color: #00ff94;
+}
+
+@media (max-width: 850px) {
+    .bmr-expanded.with-results {
+        width: 95%;
+    }
+
+    .bmr-activity-table th,
+    .bmr-activity-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}

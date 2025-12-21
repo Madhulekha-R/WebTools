@@ -1,0 +1,263 @@
+/* Reusing percentage calculator styles */
+.fraction-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #c6f6ef;
+  margin: 0 auto 28px auto;
+  max-width: 900px;
+  padding: 0 20px;
+  line-height: 1.6;
+}
+
+.big-number-desc {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #c6f6ef;
+  margin: 0 auto 18px auto;
+  max-width: 700px;
+  padding: 0 20px;
+}
+
+/* Fraction input groups */
+.frac-input-grp,
+.simplify-grp,
+.big-frac-grp {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.frac-hor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.frac-under {
+  border-top: 3px solid #00ff94;
+  padding-top: 4px;
+}
+
+.frac-num,
+.frac-den {
+  width: 70px;
+  height: 32px;
+  padding: 4px 8px;
+  font-size: 1.15rem;
+  border-radius: 7px;
+  border: 1.7px solid #00cfff;
+  background: #18191a;
+  color: #fff;
+  text-align: center;
+  transition: border 0.18s;
+  box-sizing: border-box;
+}
+
+.frac-num:focus,
+.frac-den:focus {
+  outline: none;
+  border-color: #00ff94;
+}
+
+.frac-res {
+  background: #1a2f2a !important;
+  border-color: #00ff94 !important;
+  color: #00ff94 !important;
+  font-weight: 600;
+}
+
+.frac-op {
+  width: 50px;
+  height: 36px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: #2a3f4f;
+  border: 1.7px solid #00cfff;
+  color: #00cfff;
+  text-align: center;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.frac-op:focus {
+  outline: none;
+  border-color: #00ff94;
+  background: #2f4555;
+}
+
+.frac-eq {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c6f6ef;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Mixed numbers input */
+.mixed-input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.mixed-inp {
+  width: 140px !important;
+  max-width: 160px !important;
+}
+
+.mixed-res {
+  background: #1a2f2a !important;
+  border-color: #00ff94 !important;
+  color: #00ff94 !important;
+  font-weight: 600;
+}
+
+/* Decimal conversion row */
+.decimal-conv-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+/* Fraction display for decimal conversions */
+.frac-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.frac-display-num,
+.frac-display-den {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #00ff94;
+  text-align: center;
+  padding: 4px 8px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frac-display-line {
+  width: 100%;
+  height: 3px;
+  background: #00ff94;
+  margin: 2px 0;
+}
+
+/* Big number inputs */
+.big-frac-input {
+  width: 5px;
+  max-width: 70px;
+  min-width: 70px;
+  height: 32px;
+  padding: 4px 4px;
+  font-size: 1.05rem;
+  border-radius: 7px;
+  border: 1.7px solid #00cfff;
+  background: #18191a;
+  color: #fff;
+  text-align: center;
+  transition: border 0.18s;
+  box-sizing: border-box;
+}
+
+.big-frac-input:focus {
+  outline: none;
+  border-color: #00ff94;
+}
+
+.big-frac-input.frac-res {
+  background: #1a2f2a !important;
+  border-color: #00ff94 !important;
+  color: #00ff94 !important;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+
+  .frac-num,
+  .frac-den {
+    width: 60px;
+    font-size: 1.05rem;
+  }
+
+  .frac-op {
+    width: 45px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  .mixed-inp {
+    width: 120px !important;
+  }
+
+  .big-frac-input {
+    width: 130px;
+    font-size: 0.95rem;
+  }
+
+  .frac-hor {
+    gap: 8px;
+  }
+
+  .fraction-intro,
+  .big-number-desc {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .frac-hor {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .frac-num,
+  .frac-den {
+    width: 55px;
+    font-size: 1rem;
+  }
+
+  .mixed-input-row,
+  .decimal-conv-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .mixed-inp {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .big-frac-input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .frac-display {
+    margin: 0 auto;
+  }
+
+  .fraction-intro,
+  .big-number-desc {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,13 @@
+/* Payment Calculator specific styles */
+.payment-info-text {
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 15px 0 20px 0;
+    padding: 15px;
+    background: rgba(0, 207, 255, 0.05);
+    border-left: 3px solid #00cfff;
+    border-radius: 5px;
+}
+
+/* Reuse existing styles from other calculators */

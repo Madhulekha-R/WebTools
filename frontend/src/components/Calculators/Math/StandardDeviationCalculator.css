@@ -1,0 +1,177 @@
+/* Import shared styles from PercentageCalculator */
+@import './PercentageCalculator.css';
+
+/* Standard Deviation Calculator specific styles */
+
+.stddev-card {
+    max-width: 900px !important;
+}
+
+.stddev-description-text {
+    color: #d6fce9;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.stddev-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.stddev-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.05rem;
+    border-radius: 8px;
+    border: 1.7px solid #00cfff;
+    background: #18191a;
+    color: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    resize: vertical;
+    min-height: 80px;
+    box-sizing: border-box;
+}
+
+.stddev-textarea:focus {
+    outline: none;
+    border-color: #00ff94;
+}
+
+.stddev-radio-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.stddev-radio-label-text {
+    color: #c6f6ef;
+    font-size: 1.08rem;
+    font-weight: 550;
+}
+
+.stddev-radio-options {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stddev-results {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: #18191a;
+    border: 1.5px solid #00ff94;
+    border-radius: 10px;
+}
+
+.stddev-results-title {
+    color: #00ff94;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.stddev-results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.stddev-result-item {
+    color: #fff;
+    font-size: 1.05rem;
+    padding: 0.8rem;
+    background: #23272f;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.stddev-related {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1.5px solid #00cfff;
+}
+
+.stddev-related-title {
+    color: #c6f6ef;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.stddev-related-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.stddev-related-btn {
+    padding: 0.6rem 1.2rem;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.stddev-related-btn:hover {
+    background: #1d4ed8;
+}
+
+.stddev-description-content {
+    max-width: 900px !important;
+    margin-top: 2rem !important;
+}
+
+.rng-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c6f6ef;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+
+.rng-radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #00ff94;
+}
+
+.rng-radio-label span {
+    font-weight: 500;
+}
+
+@media (max-width: 700px) {
+    .stddev-results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stddev-radio-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .stddev-radio-options {
+        gap: 1rem;
+    }
+
+    .stddev-related-buttons {
+        flex-direction: column;
+    }
+
+    .stddev-related-btn {
+        width: 100%;
+    }
+}

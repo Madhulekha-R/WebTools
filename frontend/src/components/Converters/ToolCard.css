@@ -1,0 +1,48 @@
+.tool-card {
+  display: flex;
+  align-items: center;
+  background: #23242a;
+  color: #bfc9d9;
+  border-radius: 13px;
+  padding: 1.1rem 1.3rem 1.1rem 1.1rem;
+  cursor: pointer;
+  font-size: 1.08rem;
+  font-weight: 600;
+  border: 2px solid #00ff94;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  transition: border-color 0.15s;
+  min-width: 220px;
+  min-height: 48px;
+}
+.tool-card:hover,
+.tool-card:focus {
+  border-color: #00cfff;
+  background: #23242a;
+  color: #bfc9d9;
+}
+.tool-card:last-child {
+  margin-bottom: 0;             
+}
+.tool-card-icon {
+  min-width: 2.1em;
+  min-height: 2.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.37em;
+  color: #00cfff;
+  margin-right: 1.15em;
+}
+.tool-card-name {
+  flex: 1;
+  display: block;
+  font-size: 1.09em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.22;
+  white-space: normal;
+  text-align: left;
+  word-break: break-word;
+  color: inherit;
+}

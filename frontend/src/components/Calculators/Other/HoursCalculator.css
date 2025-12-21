@@ -1,0 +1,220 @@
+.hours-calc-root {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #18191a;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hours-calc-heading-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hours-calc-heading {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.hours-calc-heading1 {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.hours-calc-subheading {
+  color: #b0b3b8;
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+}
+
+.hours-calc-card {
+  background: #23272f;
+  border: 2.5px solid #00ff94;
+  border-radius: 22px;
+  padding: 30px 40px;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.hours-calc-info {
+  background: #3b5998;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.hours-calc-form {
+  width: 100%;
+}
+
+.hours-time-row, .hours-date-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.hours-label {
+  color: #fff;
+  font-weight: 600;
+  min-width: 90px;
+  font-size: 1rem;
+}
+
+.hours-time-input, .hours-time-input-sm {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #00cfff;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.hours-date-input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #00cfff;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  min-width: 140px;
+}
+
+.hours-period-select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #00cfff;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hours-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.hours-calc-btn {
+  flex: 1;
+  background: linear-gradient(90deg,#00ff94,#21cbca,#00cfff);
+  color: #18191a;
+  font-weight: 700;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.hours-calc-btn:hover {
+  opacity: 0.9;
+}
+
+.hours-clear-btn {
+  flex: 1;
+  background: #6c757d;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hours-clear-btn:hover {
+  background: #5a6268;
+}
+
+.hours-result {
+  margin-top: 20px;
+  padding: 15px;
+  background: #00ff9422;
+  border: 1px solid #00ff94;
+  border-radius: 8px;
+  color: #00ff94;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.hours-content {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  color: #b0b3b8;
+  line-height: 1.8;
+}
+
+.hours-content p {
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.hours-subheading {
+  font-size: 1.3rem;
+  color: #70f4ca;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.hours-table {
+  width: 100%;
+  max-width: 700px;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.hours-table th {
+  background: #3b5998;
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.hours-table td {
+  padding: 12px;
+  border-bottom: 1px solid #444;
+  font-size: 1rem;
+}
+
+.hours-table tr:nth-child(even) {
+  background: #2a2e35;
+}
+
+.hours-table tr:nth-child(odd) {
+  background: #23272f;
+}

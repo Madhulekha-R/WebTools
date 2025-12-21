@@ -1,0 +1,323 @@
+/* Input Field Styles */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #00cfff;
+    background: #18191a;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #00ff94;
+    box-shadow: 0 0 0 3px rgba(0, 255, 148, 0.1);
+}
+
+.form-input:hover {
+    border-color: #00ff94;
+}
+
+.input-with-prefix,
+.input-with-suffix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix,
+.input-suffix {
+    position: absolute;
+    color: #00cfff;
+    font-weight: 600;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.input-prefix {
+    left: 15px;
+}
+
+.input-suffix {
+    right: 15px;
+}
+
+.input-with-prefix .form-input {
+    padding-left: 35px;
+}
+
+.input-with-suffix .form-input {
+    padding-right: 45px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    color: #18191a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 148, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Introduction Text */
+.interest-intro {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    color: #b0b3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.interest-intro a {
+    color: #00cfff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.interest-intro a:hover {
+    color: #00ff94;
+}
+
+/* Container */
+.interest-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Two-column layout when results are present */
+.interest-container:has(.interest-results-section) {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    justify-content: initial;
+}
+
+.interest-input-section {
+    width: 100%;
+    max-width: 400px;
+}
+
+.interest-card {
+    background: #23272f;
+    border: 2.5px solid #00ff94;
+    border-radius: 22px;
+    padding: 30px 35px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.interest-section-title {
+    color: #00ff94;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+/* Loan Term Row */
+.interest-term-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.interest-term-label {
+    color: #b0b3b8;
+    font-size: 0.9rem;
+}
+
+/* Button Group */
+.interest-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.interest-clear-btn {
+    background: #6c757d !important;
+    color: #fff !important;
+}
+
+/* Results Section */
+.interest-results-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.interest-results-card {
+    border-color: #00cfff;
+    height: fit-content;
+}
+
+.interest-results-box {
+    background: rgba(0, 207, 255, 0.05);
+    border: 1px solid rgba(0, 207, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.interest-result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.interest-result-row:last-child {
+    border-bottom: none;
+}
+
+.interest-result-row.highlight {
+    background: linear-gradient(135deg, rgba(0, 255, 148, 0.15), rgba(0, 207, 255, 0.15));
+    padding: 15px;
+    margin: -5px -5px 10px -5px;
+    border-radius: 8px;
+    border-bottom: none;
+}
+
+.interest-result-label {
+    color: #b0b3b8;
+    font-size: 0.95rem;
+}
+
+.interest-result-row.highlight .interest-result-label {
+    color: #00ff94;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.interest-result-value {
+    color: #00cfff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.interest-result-row.highlight .interest-result-value {
+    color: #00ff94;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Charts Container */
+.interest-charts-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.interest-charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.interest-chart-card {
+    border-color: #00cfff;
+}
+
+.interest-chart {
+    background: rgba(0, 207, 255, 0.05);
+    border: 1px solid rgba(0, 207, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.interest-line-chart,
+.interest-pie-chart {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+    .interest-container,
+    .interest-container:has(.interest-results-section) {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .interest-input-section {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .interest-charts-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .interest-card {
+        padding: 25px 25px;
+    }
+
+    .interest-term-row {
+        grid-template-columns: 1fr;
+    }
+
+    .interest-term-label {
+        display: none;
+    }
+
+    .interest-button-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .interest-intro {
+        font-size: 0.9rem;
+    }
+
+    .interest-card {
+        padding: 20px 20px;
+    }
+
+    .interest-section-title {
+        font-size: 1.2rem;
+    }
+
+    .interest-chart {
+        padding: 10px;
+    }
+}

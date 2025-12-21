@@ -1,0 +1,1101 @@
+// const express = require('express');
+// const cors = require('cors');
+// const multer = require('multer');
+// const fs = require('fs');
+// const path = require('path');
+// const libre = require('libreoffice-convert');
+// const PDFDocument = require('pdfkit');
+// const { PDFDocument: PDFLib } = require('pdf-lib');
+// const sharp = require('sharp');
+
+// const app = express();
+// const PORT = 5000;
+
+// // CORS setup: update the origin to match your frontend port if needed
+// app.use(cors({
+//   origin: 'http://localhost:5173', // <-- update to your frontend port
+//   credentials: true,
+//   exposedHeaders: ['Content-Disposition']
+// }));
+// app.use(express.json());
+
+// // Ensure upload and output directories exist
+// const uploadDir = path.join(__dirname, 'uploads');
+// const outputDir = path.join(__dirname, 'output');
+// [uploadDir, outputDir].forEach(dir => {
+//   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+// });
+
+// // Multer setup
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => cb(null, uploadDir),
+//   filename: (req, file, cb) => {
+//     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+//     cb(null, uniqueSuffix + '-' + file.originalname);
+//   }
+// });
+// const upload = multer({ storage, limits: { fileSize: 50 * 1024 * 1024 } });
+
+// // Utility: cleanup uploaded files
+// const cleanupFile = (filePath) => {
+//   if (fs.existsSync(filePath)) {
+//     try { fs.unlinkSync(filePath); } catch (err) { console.error('Cleanup error:', err); }
+//   }
+// };
+
+// // --- WORD TO PDF ---
+// app.post('/api/convert/word-to-pdf', upload.single('file'), async (req, res) => {
+//   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+//   const inputPath = req.file.path;
+//   const outputFilename = req.file.originalname.replace(/\.(doc|docx)$/i, '.pdf');
+//   try {
+//     const inputBuffer = fs.readFileSync(inputPath);
+//     libre.convert(inputBuffer, '.pdf', undefined, (err, pdfBuffer) => {
+//       cleanupFile(inputPath);
+//       if (err) {
+//         console.error('Conversion error:', err);
+//         return res.status(500).json({ error: 'Conversion failed: ' + err.message });
+//       }
+//       res.set({
+//         'Content-Type': 'application/pdf',
+//         'Content-Disposition': `attachment; filename="${outputFilename}"`,
+//         'Content-Length': pdfBuffer.length
+//       });
+//       res.send(pdfBuffer);
+//     });
+//   } catch (error) {
+//     cleanupFile(inputPath);
+//     res.status(500).json({ error: 'Conversion failed: ' + error.message });
+//   }
+// });
+
+// // --- PDF TO WORD (DOCX) ---
+// app.post('/api/convert/pdf-to-word', upload.single('file'), async (req, res) => {
+//   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+//   const inputPath = req.file.path;
+//   const outputFilename = req.file.originalname.replace(/\.pdf$/i, '.docx');
+
+//   try {
+//     const outputPath = path.join(outputDir, outputFilename);
+
+//     // Convert using LibreOffice
+//     const { exec } = require('child_process');
+//     await new Promise((resolve, reject) => {
+//       exec(`soffice --convert-to docx --outdir ${outputDir} ${inputPath}`,
+//         (error, stdout, stderr) => {
+//           if (error) {
+//             console.error('Conversion error:', stderr);
+//             return reject(new Error('PDF to Word conversion failed'));
+//           }
+//           resolve();
+//         }
+//       );
+//     });
+
+//     // Verify output
+//     if (!fs.existsSync(outputPath)) {
+//       throw new Error('Conversion failed - no output file generated');
+//     }
+
+//     // Send converted file
+//     res.download(outputPath, outputFilename, (err) => {
+//       cleanupFile(inputPath);
+//       cleanupFile(outputPath);
+//       if (err) console.error('Download error:', err);
+//     });
+
+//   } catch (error) {
+//     cleanupFile(inputPath);
+//     res.status(500).json({ error: error.message });
+//   }
+// });
+
+// // --- JPG/PNG TO PDF ---
+// app.post('/api/convert/jpg-to-pdf', upload.array('file'), async (req, res) => {
+//   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+//   const inputPath = req.file.path;
+//   const outputFilename = req.file.originalname.replace(/\.(jpg|jpeg|png)$/i, '.pdf');
+//   try {
+//     const metadata = await sharp(inputPath).metadata();
+//     const doc = new PDFDocument({
+//       size: [metadata.width, metadata.height],
+//       margins: { top: 0, bottom: 0, left: 0, right: 0 }
+//     });
+//     const chunks = [];
+//     doc.on('data', chunk => chunks.push(chunk));
+//     doc.on('end', () => {
+//       const pdfBuffer = Buffer.concat(chunks);
+//       cleanupFile(inputPath);
+//       res.set({
+//         'Content-Type': 'application/pdf',
+//         'Content-Disposition': `attachment; filename="${outputFilename}"`,
+//         'Content-Length': pdfBuffer.length
+//       });
+//       res.send(pdfBuffer);
+//     });
+//     doc.image(inputPath, 0, 0, { width: metadata.width, height: metadata.height });
+//     doc.end();
+//   } catch (error) {
+//     cleanupFile(inputPath);
+//     res.status(500).json({ error: 'Conversion failed: ' + error.message });
+//   }
+// });
+
+// // --- COMPRESS PDF (basic) ---
+// app.post('/api/convert/compress-pdf', upload.single('file'), async (req, res) => {
+//   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+//   const inputPath = req.file.path;
+//   const outputFilename = req.file.originalname.replace(/\.pdf$/i, '_compressed.pdf');
+//   try {
+//     const pdfBytes = fs.readFileSync(inputPath);
+//     const pdf = await PDFLib.load(pdfBytes);
+//     const compressedBytes = await pdf.save({ useObjectStreams: false, addDefaultPage: false });
+//     cleanupFile(inputPath);
+//     res.set({
+//       'Content-Type': 'application/pdf',
+//       'Content-Disposition': `attachment; filename="${outputFilename}"`,
+//       'Content-Length': compressedBytes.length
+//     });
+//     res.send(Buffer.from(compressedBytes));
+//   } catch (error) {
+//     cleanupFile(inputPath);
+//     res.status(500).json({ error: 'Compression failed: ' + error.message });
+//   }
+// });
+
+// // --- HEALTH CHECK ---
+// app.get('/api/health', (req, res) => {
+//   res.json({ status: 'Server is running', timestamp: new Date().toISOString() });
+// });
+
+// // --- ERROR HANDLING ---
+// app.use((error, req, res, next) => {
+//   console.error('Server error:', error);
+//   res.status(500).json({ error: 'Internal server error' });
+// });
+
+// // --- CLEANUP OLD FILES PERIODICALLY ---
+// setInterval(() => {
+//   const now = Date.now();
+//   const maxAge = 60 * 60 * 1000; // 1 hour
+//   [uploadDir, outputDir].forEach(dir => {
+//     if (fs.existsSync(dir)) {
+//       fs.readdirSync(dir).forEach(file => {
+//         const filePath = path.join(dir, file);
+//         const stats = fs.statSync(filePath);
+//         if (now - stats.mtime.getTime() > maxAge) cleanupFile(filePath);
+//       });
+//     }
+//   });
+// }, 60 * 60 * 1000);
+
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+//   console.log(`Upload directory: ${uploadDir}`);
+//   console.log(`Output directory: ${outputDir}`);
+// });
+
+
+
+const express = require('express');
+const cors = require('cors');
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
+require('dotenv').config();
+
+const libre = require('libreoffice-convert');
+const { fromPath } = require('pdf2pic');
+const { exec } = require('child_process');
+const { PDFDocument, StandardFonts, rgb } = require('pdf-lib');
+const puppeteer = require('puppeteer');
+const pdfParse = require('pdf-parse');
+const Diff = require('diff');
+
+const app = express();
+const PORT = 5000;
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+  exposedHeaders: ['Content-Disposition']
+}));
+app.use(express.json());
+
+const uploadDir = path.join(__dirname, 'uploads');
+const outputDir = path.join(__dirname, 'output');
+[uploadDir, outputDir].forEach(dir => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+});
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadDir),
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  }
+});
+const upload = multer({ storage, limits: { fileSize: 50 * 1024 * 1024 } });
+
+const cleanupFile = (filePath) => {
+  if (fs.existsSync(filePath)) {
+    try {
+      fs.unlinkSync(filePath);
+    } catch (err) {
+      // If file is locked, try again after a delay
+      if (err.code === 'EBUSY' || err.code === 'EPERM') {
+        console.warn(`File locked, will retry cleanup: ${filePath}`);
+        setTimeout(() => {
+          try {
+            if (fs.existsSync(filePath)) {
+              fs.unlinkSync(filePath);
+            }
+          } catch (retryErr) {
+            console.error('Cleanup retry failed:', retryErr.message);
+          }
+        }, 1000); // Retry after 1 second
+      } else {
+        console.error('Cleanup error:', err.message);
+        if (!req.file) {
+          return res.status(400).json({ error: 'No image uploaded. Please select a JPG, JPEG, or PNG file.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.(jpg|jpeg|png)$/i, '.pdf');
+        try {
+          // Use libreoffice-convert to convert to PDF
+          const inputBuffer = fs.readFileSync(inputPath);
+          libre.convert(inputBuffer, '.pdf', undefined, (err, pdfBuffer) => {
+            cleanupFile(inputPath);
+            if (err) {
+              return res.status(500).json({ error: 'Conversion failed: ' + err.message });
+            }
+            res.set({
+              'Content-Type': 'application/pdf',
+              'Content-Disposition': `attachment; filename="${outputFilename}"`,
+              'Content-Length': pdfBuffer.length
+            });
+            res.send(pdfBuffer);
+          });
+        } catch (error) {
+          cleanupFile(inputPath);
+          res.status(500).json({ error: 'Conversion failed: ' + error.message });
+        }
+      });
+
+      // PowerPoint (PPT, PPTX) to PDF (using LibreOffice)
+      app.post('/api/convert/powerpoint-to-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No PowerPoint uploaded. Please select a PPT or PPTX file.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.(ppt|pptx)$/i, '.pdf');
+
+        try {
+          const inputBuffer = fs.readFileSync(inputPath);
+          libre.convert(inputBuffer, '.pdf', undefined, (err, pdfBuffer) => {
+            setTimeout(() => cleanupFile(inputPath), 500);
+
+            if (err) {
+              console.error('PowerPoint to PDF error:', err);
+              return res.status(500).json({ error: 'Conversion failed. Please try again.' });
+            }
+
+            res.set({
+              'Content-Type': 'application/pdf',
+              'Content-Disposition': `attachment; filename="${outputFilename}"`,
+              'Content-Length': pdfBuffer.length
+            });
+            res.send(pdfBuffer);
+          });
+        } catch (error) {
+          console.error('PowerPoint to PDF error:', error);
+          setTimeout(() => cleanupFile(inputPath), 500);
+          res.status(500).json({ error: 'Conversion failed. Please try again.' });
+        }
+      });
+
+      // Excel (XLS, XLSX) to PDF (using LibreOffice)
+      app.post('/api/convert/powerpoint-to-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No PowerPoint uploaded. Please select a PPT or PPTX file.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.(ppt|pptx)$/i, '.pdf');
+
+        try {
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'import-file': { operation: 'import/upload' },
+              'convert-file': { operation: 'convert', input: 'import-file', output_format: 'pdf', engine: 'office' },
+              'export-file': { operation: 'export/url', input: 'convert-file' }
+            }
+          });
+
+          const uploadTask = job.tasks.filter(task => task.name === 'import-file')[0];
+          const inputFile = fs.readFileSync(inputPath);
+          await cloudConvert.tasks.upload(uploadTask, inputFile, req.file.originalname);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks.filter(task => task.name === 'export-file')[0];
+          const file = exportTask.result.files[0];
+
+          // Download using https/http
+          const https = require('https');
+          const http = require('http');
+          const fileUrl = file.url;
+          const protocol = fileUrl.startsWith('https') ? https : http;
+
+          protocol.get(fileUrl, (fileStream) => {
+            const chunks = [];
+            fileStream.on('data', chunk => chunks.push(chunk));
+            fileStream.on('end', () => {
+              const pdfBuffer = Buffer.concat(chunks);
+              setTimeout(() => cleanupFile(inputPath), 500);
+              res.set({
+                'Content-Type': 'application/pdf',
+                'Content-Disposition': `attachment; filename="${outputFilename}"`,
+                'Content-Length': pdfBuffer.length
+              });
+              res.send(pdfBuffer);
+            });
+            fileStream.on('error', (err) => {
+              setTimeout(() => cleanupFile(inputPath), 500);
+              res.status(500).json({ error: 'Download failed: ' + err.message });
+            });
+          }).on('error', (err) => {
+            setTimeout(() => cleanupFile(inputPath), 500);
+            res.status(500).json({ error: 'HTTP request failed: ' + err.message });
+          });
+
+        } catch (error) {
+          console.error('PowerPoint to PDF error:', error);
+          setTimeout(() => cleanupFile(inputPath), 500);
+          res.status(500).json({ error: 'Conversion failed: ' + error.message });
+        }
+      });
+
+      // Excel (XLS, XLSX) to PDF (using CloudConvert)
+      app.post('/api/convert/excel-to-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No Excel file uploaded. Please select an XLS or XLSX file.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.(xls|xlsx)$/i, '.pdf');
+
+        try {
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'import-file': { operation: 'import/upload' },
+              'convert-file': { operation: 'convert', input: 'import-file', output_format: 'pdf', engine: 'office' },
+              'export-file': { operation: 'export/url', input: 'convert-file' }
+            }
+          });
+
+          const uploadTask = job.tasks.filter(task => task.name === 'import-file')[0];
+          const inputFile = fs.readFileSync(inputPath);
+          await cloudConvert.tasks.upload(uploadTask, inputFile, req.file.originalname);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks.filter(task => task.name === 'export-file')[0];
+          const file = exportTask.result.files[0];
+
+          // Download using https/http
+          const https = require('https');
+          const http = require('http');
+          const fileUrl = file.url;
+          const protocol = fileUrl.startsWith('https') ? https : http;
+
+          protocol.get(fileUrl, (fileStream) => {
+            const chunks = [];
+            fileStream.on('data', chunk => chunks.push(chunk));
+            fileStream.on('end', () => {
+              const pdfBuffer = Buffer.concat(chunks);
+              setTimeout(() => cleanupFile(inputPath), 500);
+              res.set({
+                'Content-Type': 'application/pdf',
+                'Content-Disposition': `attachment; filename="${outputFilename}"`,
+                'Content-Length': pdfBuffer.length
+              });
+              res.send(pdfBuffer);
+            });
+            fileStream.on('error', (err) => {
+              setTimeout(() => cleanupFile(inputPath), 500);
+              res.status(500).json({ error: 'Download failed: ' + err.message });
+            });
+          }).on('error', (err) => {
+            setTimeout(() => cleanupFile(inputPath), 500);
+            res.status(500).json({ error: 'HTTP request failed: ' + err.message });
+          });
+
+        } catch (error) {
+          console.error('Excel to PDF error:', error);
+          setTimeout(() => cleanupFile(inputPath), 500);
+          res.status(500).json({ error: 'Conversion failed: ' + error.message });
+        }
+      });
+
+      // Edit PDF - add simple text annotation (for demo, add 'text' and position to form-data)
+      app.post('/api/convert/edit-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file)
+          return res.status(400).json({ error: 'No PDF uploaded.' });
+
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.pdf$/i, '_edited.pdf');
+        const { text = 'Edited by AI', fontSize = 18 } = req.body;
+        // Approximate bottom margin for "last content" (e.g., 72pt = 1 inch)
+        const bottomBuffer = 72;
+
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const { PDFDocument, rgb } = require('pdf-lib');
+          const pdfDoc = await PDFDocument.load(pdfBytes);
+
+          const pages = pdfDoc.getPages();
+          if (pages.length > 0) {
+            const page = pages[0];
+            const { width, height } = page.getSize();
+
+            // Best estimate: place just above the bottom margin
+            page.drawText(text, {
+              x: 50,
+              y: bottomBuffer,
+              size: Number(fontSize),
+              color: rgb(0, 0.53, 0.32),
+            });
+          }
+
+          const editedPdfBytes = await pdfDoc.save();
+          fs.unlinkSync(inputPath);
+
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+            'Content-Length': editedPdfBytes.length,
+          });
+          res.send(Buffer.from(editedPdfBytes));
+        } catch (error) {
+          if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath);
+          res.status(500).json({ error: 'Editing failed: ' + error.message });
+        }
+      });
+
+      app.post('/api/convert/rotate-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No PDF uploaded. Please select a PDF file.' });
+        }
+        const angle = parseInt(req.body.angle || req.query.angle || 90, 10);
+        if (![90, 180, 270, -90, -180, -270].includes(angle)) {
+          return res.status(400).json({ error: 'Invalid rotation angle. Must be 90, 180, or 270.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.pdf$/i, `_rotated${angle}.pdf`);
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const { PDFDocument, degrees } = require('pdf-lib'); // Use 'degrees'
+          const pdfDoc = await PDFDocument.load(pdfBytes);
+          pdfDoc.getPages().forEach(page => {
+            const currentAngle = page.getRotation().angle;
+            page.setRotation(degrees((currentAngle + angle) % 360));
+          });
+          const rotatedPdfBytes = await pdfDoc.save();
+          cleanupFile(inputPath);
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+            'Content-Length': rotatedPdfBytes.length
+          });
+          res.send(Buffer.from(rotatedPdfBytes));
+        } catch (error) {
+          console.error('Rotation failed:', error); // Add this for more info
+          cleanupFile(inputPath);
+          res.status(500).json({ error: 'Rotation failed: ' + error.message });
+        }
+      });
+
+
+      // Crop PDF
+      app.post('/api/convert/crop-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No file uploaded. Please select a PDF file.' });
+        }
+
+        // Crop parameters: left, right, top, bottom (expected as numbers in form-data)
+        const left = parseFloat(req.body.left) || 0;
+        const right = parseFloat(req.body.right) || 0;
+        const top = parseFloat(req.body.top) || 0;
+        const bottom = parseFloat(req.body.bottom) || 0;
+
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.pdf$/i, '_cropped.pdf');
+
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const pdfDoc = await PDFDocument.load(pdfBytes);
+
+          pdfDoc.getPages().forEach(page => {
+            const { width, height } = page.getSize();
+            // CropBox: (x, y, width, height)
+            // Here, (left, bottom) is the lower-left corner, width/height define the box
+            page.setCropBox(left, bottom, width - left - right, height - top - bottom);
+          });
+
+          const croppedPdfBytes = await pdfDoc.save();
+          cleanupFile(inputPath);
+
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+            'Content-Length': croppedPdfBytes.length
+          });
+          res.send(Buffer.from(croppedPdfBytes));
+
+        } catch (error) {
+          cleanupFile(inputPath);
+          res.status(500).json({ error: 'Cropping failed: ' + error.message });
+        }
+      });
+
+      app.post('/api/convert/redact-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No file uploaded. Please select a PDF file.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.pdf$/i, '_redacted.pdf');
+        const wordsToRedactRaw = req.body.words || '';
+        const wordsToRedact = wordsToRedactRaw
+          .split(',')
+          .map(s => s.trim())
+          .filter(s => !!s);
+
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const { PDFDocument, rgb } = require('pdf-lib');
+          const pdfDoc = await PDFDocument.load(pdfBytes);
+
+          // Simple text redaction: overlays black rectangle on matched words.
+          pdfDoc.getPages().forEach(page => {
+            const { width, height } = page.getSize();
+            const textContent = page.getTextContent ? page.getTextContent() : null;
+            // pdf-lib does not have built-in text coordinates extraction.
+            // So here's a super-basic approach: draw a black box at top of the page for demo,
+            // Production should use more advanced PDF parsing or external libraries, but for now:
+            wordsToRedact.forEach((word, i) => {
+              // Place the redaction rectangle, e.g., in fixed upper positions
+              page.drawRectangle({
+                x: 50 + (i * 20),
+                y: height - 80 - (i * 24),
+                width: 140,
+                height: 18,
+                color: rgb(0, 0, 0),
+              });
+              // Optionally overlay text: page.drawText('Redacted', { x, y, ... })
+            });
+          });
+
+          const redactedPdfBytes = await pdfDoc.save();
+          fs.unlinkSync(inputPath);
+
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+            'Content-Length': redactedPdfBytes.length
+          });
+          res.send(Buffer.from(redactedPdfBytes));
+        } catch (error) {
+          fs.existsSync(inputPath) && fs.unlinkSync(inputPath);
+          res.status(500).json({ error: 'Redaction failed: ' + error.message });
+        }
+      });
+
+      app.post('/api/convert/compress-pdf', upload.single('file'), (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No PDF uploaded. Please select a PDF file.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.pdf$/i, '_compressed.pdf');
+        const outputPath = path.join(outputDir, outputFilename);
+
+        const gsCmd = `gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${outputPath}" "${inputPath}"`;
+
+        exec(gsCmd, (error, stdout, stderr) => {
+          fs.unlinkSync(inputPath); // Remove original file
+          if (error) {
+            console.error('Ghostscript failed:', stderr);
+            return res.status(500).json({ error: 'Compression failed: ' + error.message });
+          }
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+          });
+          res.sendFile(outputPath, () => {
+            fs.unlinkSync(outputPath); // Remove compressed file after sending
+          });
+        });
+      });
+
+      app.post('/api/convert/compress-word', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No Word file uploaded. Please select DOC or DOCX file.' });
+        }
+
+        const inputPath = req.file.path;
+        const pdfFilename = req.file.originalname.replace(/\.(doc|docx)$/i, '.pdf');
+        const compressedPdfFilename = pdfFilename.replace(/\.pdf$/i, '_compressed.pdf');
+        const pdfOutputPath = path.join(outputDir, pdfFilename);
+        const compressedPdfPath = path.join(outputDir, compressedPdfFilename);
+
+        try {
+          // Convert Word to PDF using CloudConvert
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'import-file': { operation: 'import/upload' },
+              'convert-file': { operation: 'convert', input: 'import-file', output_format: 'pdf', engine: 'office' },
+              'export-file': { operation: 'export/url', input: 'convert-file' }
+            }
+          });
+
+          const uploadTask = job.tasks.filter(task => task.name === 'import-file')[0];
+          const inputFile = fs.readFileSync(inputPath);
+          await cloudConvert.tasks.upload(uploadTask, inputFile, req.file.originalname);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks.filter(task => task.name === 'export-file')[0];
+          const file = exportTask.result.files[0];
+          const fileStream = await cloudConvert.tasks.download(file.url);
+
+          const chunks = [];
+          fileStream.on('data', chunk => chunks.push(chunk));
+
+          fileStream.on('end', () => {
+            const pdfBuffer = Buffer.concat(chunks);
+            fs.writeFileSync(pdfOutputPath, pdfBuffer);
+            setTimeout(() => cleanupFile(inputPath), 500);
+
+            // Compress PDF using Ghostscript
+            const gsCmd = `gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${compressedPdfPath}" "${pdfOutputPath}"`;
+            exec(gsCmd, (error, stdout, stderr) => {
+              setTimeout(() => cleanupFile(pdfOutputPath), 500);
+
+              if (error) {
+                console.error('PDF compression failed:', stderr);
+                return res.status(500).json({ error: 'PDF compression failed: ' + error.message });
+              }
+
+              res.set({
+                'Content-Type': 'application/pdf',
+                'Content-Disposition': `attachment; filename="${compressedPdfFilename}"`,
+              });
+              res.sendFile(compressedPdfPath, (sendErr) => {
+                if (sendErr) console.error('File send error:', sendErr);
+                setTimeout(() => cleanupFile(compressedPdfPath), 1000);
+              });
+            });
+          });
+
+          fileStream.on('error', (err) => {
+            setTimeout(() => cleanupFile(inputPath), 500);
+            res.status(500).json({ error: 'Download failed: ' + err.message });
+          });
+
+        } catch (error) {
+          console.error('Word compression error:', error);
+          setTimeout(() => cleanupFile(inputPath), 500);
+          return res.status(500).json({ error: 'Server error: ' + error.message });
+        }
+      });
+
+      // --- MERGE PDF FILES ---
+      app.post('/api/convert/merge-pdf', upload.array('files'), async (req, res) => {
+        if (!req.files || req.files.length < 2) {
+          return res.status(400).json({ error: 'At least 2 PDF files required for merging' });
+        }
+        try {
+          const mergedPdf = await PDFDocument.create();
+          for (const file of req.files) {
+            const pdfBytes = fs.readFileSync(file.path);
+            const pdf = await PDFDocument.load(pdfBytes); // FIX: Use PDFDocument here!
+            const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+            pages.forEach((page) => mergedPdf.addPage(page));
+            cleanupFile(file.path);
+          }
+          const pdfBytes = await mergedPdf.save();
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': 'attachment; filename="merged.pdf"',
+            'Content-Length': pdfBytes.length
+          });
+          res.send(Buffer.from(pdfBytes));
+        } catch (error) {
+          req.files?.forEach(file => cleanupFile(file.path));
+          res.status(500).json({ error: 'Merge failed: ' + error.message });
+        }
+      });
+
+      const archiver = require('archiver'); // Add at the top of your file
+
+      // --- SPLIT PDF (split at user-chosen page, returns two PDFs in a ZIP) ---
+      app.post('/api/convert/split-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+
+        const endPage = parseInt(req.body.endPage, 10); // 1-based index to split at
+        const inputPath = req.file.path;
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const pdf = await PDFDocument.load(pdfBytes);
+          const totalPages = pdf.getPageCount();
+          if (isNaN(endPage) || endPage < 1 || endPage >= totalPages) {
+            cleanupFile(inputPath);
+            return res.status(400).json({ error: `Enter a value between 1 and ${totalPages - 1}` });
+          }
+
+          // First part: pages 1 to endPage
+          const pdf1 = await PDFDocument.create();
+          const firstPages = await pdf1.copyPages(pdf, Array.from({ length: endPage }, (_, i) => i));
+          firstPages.forEach(page => pdf1.addPage(page));
+          const pdf1Bytes = await pdf1.save();
+
+          // Second part: pages endPage+1 to last
+          const pdf2 = await PDFDocument.create();
+          const secondPages = await pdf2.copyPages(pdf, Array.from({ length: totalPages - endPage }, (_, i) => i + endPage));
+          secondPages.forEach(page => pdf2.addPage(page));
+          const pdf2Bytes = await pdf2.save();
+
+          // Bundle two PDFs into a ZIP
+          const zipFilename = 'split_result.zip';
+          const zipPath = path.join(outputDir, zipFilename);
+          const output = fs.createWriteStream(zipPath);
+          const archive = archiver('zip', { zlib: { level: 9 } });
+
+          archive.append(Buffer.from(pdf1Bytes), { name: 'part_1.pdf' });
+          archive.append(Buffer.from(pdf2Bytes), { name: 'part_2.pdf' });
+          archive.pipe(output);
+          await archive.finalize();
+
+          output.on('close', () => {
+            cleanupFile(inputPath);
+            res.set({
+              'Content-Type': 'application/zip',
+              'Content-Disposition': `attachment; filename="${zipFilename}"`,
+              'Content-Length': archive.pointer()
+            });
+            res.sendFile(zipPath, () => cleanupFile(zipPath));
+          });
+
+          output.on('error', err => {
+            cleanupFile(inputPath);
+            cleanupFile(zipPath);
+            res.status(500).json({ error: 'Split failed: ' + err.message });
+          });
+        } catch (error) {
+          cleanupFile(inputPath);
+          res.status(500).json({ error: 'Split failed: ' + error.message });
+        }
+      });
+
+      app.post('/api/convert/add-page-numbers', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No PDF file uploaded.' });
+        }
+
+        const inputPath = req.file.path;
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const pdfDoc = await PDFDocument.load(pdfBytes);
+
+          const pages = pdfDoc.getPages();
+          const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+          const fontSize = 12;
+
+          pages.forEach((page, idx) => {
+            const { width, height } = page.getSize();
+            const text = `${idx + 1} / ${pages.length}`;
+            const textWidth = font.widthOfTextAtSize(text, fontSize);
+            page.drawText(text, {
+              x: (width - textWidth) / 2,
+              y: 20,
+              size: fontSize,
+              font: font,
+              color: rgb(0, 0, 0),
+            });
+          });
+
+          const modifiedPdfBytes = await pdfDoc.save();
+
+          cleanupFile(inputPath);
+
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': 'attachment; filename="paged-' + req.file.originalname + '"',
+            'Content-Length': modifiedPdfBytes.length,
+          });
+          res.send(Buffer.from(modifiedPdfBytes));
+        } catch (error) {
+          cleanupFile(inputPath);
+          res.status(500).json({ error: 'Failed to add page numbers: ' + error.message });
+        }
+      });
+
+      app.post('/api/convert/add-watermark', upload.fields([
+        { name: 'file', maxCount: 1 },
+        { name: 'watermarkImage', maxCount: 1 }
+      ]), async (req, res) => {
+        if (!req.files || !req.files['file']) {
+          return res.status(400).json({ error: 'No PDF file uploaded.' });
+        }
+
+        const inputPath = req.files['file'][0].path;
+        const watermarkText = req.body.watermarkText || '';
+        const imageFileObj = req.files['watermarkImage'] ? req.files['watermarkImage'][0] : null;
+
+        try {
+          const pdfBytes = fs.readFileSync(inputPath);
+          const pdfDoc = await PDFDocument.load(pdfBytes);
+          const pages = pdfDoc.getPages();
+
+          if (imageFileObj) {
+            const imageExt = (imageFileObj.originalname.split('.').pop() || '').toLowerCase();
+            const imageBytes = fs.readFileSync(imageFileObj.path);
+            let embedImage;
+
+            if (imageExt === 'png') {
+              embedImage = await pdfDoc.embedPng(imageBytes);
+            } else if (imageExt === 'jpg' || imageExt === 'jpeg') {
+              embedImage = await pdfDoc.embedJpg(imageBytes);
+            } else {
+              throw new Error('Unsupported watermark image format.');
+            }
+
+            const imgWidth = 200;
+            const imgHeight = 100;
+            pages.forEach(page => {
+              const { width, height } = page.getSize();
+              page.drawImage(embedImage, {
+                x: (width - imgWidth) / 2,
+                y: (height - imgHeight) / 2,
+                width: imgWidth,
+                height: imgHeight,
+                opacity: 0.3
+              });
+            });
+
+            fs.unlinkSync(imageFileObj.path); // cleanup image temp file
+          }
+          else if (watermarkText) {
+            const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+            const fontSize = 50;
+            const opacity = 0.15;
+
+            pages.forEach(page => {
+              const { width, height } = page.getSize();
+              const textWidth = font.widthOfTextAtSize(watermarkText, fontSize);
+              const textHeight = fontSize;
+              const x = (width / 2) - (textWidth / 2);
+              const y = (height / 2) - (textHeight / 2);
+
+              page.drawText(watermarkText, {
+                x,
+                y,
+                size: fontSize,
+                font,
+                color: rgb(0.75, 0.75, 0.75),
+                rotate: { degrees: 45 },
+                opacity: opacity
+              });
+            });
+          }
+
+          const modifiedPdfBytes = await pdfDoc.save();
+
+          cleanupFile(inputPath);
+
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="watermarked-${req.files['file'][0].originalname}"`,
+            'Content-Length': modifiedPdfBytes.length,
+          });
+          res.send(Buffer.from(modifiedPdfBytes));
+
+        } catch (error) {
+          cleanupFile(inputPath);
+          if (imageFileObj) fs.unlinkSync(imageFileObj.path);
+          res.status(500).json({ error: 'Failed to add watermark: ' + error.message });
+        }
+      });
+
+      app.post('/api/convert/html-to-pdf', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No HTML file uploaded.' });
+        }
+        const inputPath = req.file.path;
+        const outputFilename = req.file.originalname.replace(/\.html?$/i, '.pdf');
+
+        try {
+          let html = fs.readFileSync(inputPath, 'utf-8').trim();
+          cleanupFile(inputPath);
+
+          // If the file looks like an HTML fragment, wrap it properly
+          if (!html.toLowerCase().includes('<html')) {
+            html = `<!DOCTYPE html><html><head><title>PDF</title></head><body>${html}</body></html>`;
+          }
+
+          const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox"] });
+          const page = await browser.newPage();
+          await page.setContent(html, { waitUntil: 'networkidle0' });
+
+          const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
+          await browser.close();
+
+          // Check buffer size before sending
+          if (!pdfBuffer || pdfBuffer.length < 300) {
+            return res.status(500).json({ error: 'HTML to PDF failed: Output PDF is empty.' });
+          }
+
+          res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+            'Content-Length': pdfBuffer.length
+          });
+          res.send(pdfBuffer);
+
+        } catch (error) {
+          return res.status(500).json({ error: 'HTML to PDF failed: ' + error.message });
+        }
+      });
+
+      app.post('/api/compare-pdf', upload.fields([{ name: 'file1', maxCount: 1 }, { name: 'file2', maxCount: 1 }]), async (req, res) => {
+        if (!req.files || !req.files['file1'] || !req.files['file2']) {
+          return res.status(400).json({ error: 'Please upload both PDF files.' });
+        }
+        const filePath1 = req.files['file1'][0].path;
+        const filePath2 = req.files['file2'][0].path;
+
+        try {
+          const dataBuffer1 = fs.readFileSync(filePath1);
+          const dataBuffer2 = fs.readFileSync(filePath2);
+          const data1 = await pdfParse(dataBuffer1);
+          const data2 = await pdfParse(dataBuffer2);
+
+          // Use the diff library to compare
+          const diff = Diff.diffWordsWithSpace(data1.text, data2.text);
+
+          // Optional: Format as HTML highlighting diffs
+          let html = '';
+          diff.forEach(part => {
+            // Green for additions, red for deletions, grey for common parts
+            const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+            html += `<span style="color:${color}">${part.value.replace(/\n/g, '<br>')}</span>`;
+          });
+
+          // Clean up temp files
+          cleanupFile(filePath1);
+          cleanupFile(filePath2);
+
+          // Response: send as HTML (good for preview), or as a text report
+          res.setHeader('Content-Type', 'text/html');
+          res.send(`<div style="font-family:monospace">${html}</div>`);
+        } catch (error) {
+          cleanupFile(filePath1);
+          cleanupFile(filePath2);
+          res.status(500).json({ error: 'PDF comparison failed: ' + error.message });
+        }
+      });
+
+      // --- COMPRESS IMAGE (JPG, JPEG, PNG) ---
+      app.post('/api/convert/compress-image', upload.single('file'), async (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ error: 'No image file uploaded. Please select JPG, JPEG, or PNG file.' });
+        }
+
+        const inputPath = req.file.path;
+        const fileExt = path.extname(req.file.originalname).toLowerCase();
+        const outputFilename = req.file.originalname.replace(/\.(jpg|jpeg|png)$/i, '_compressed' + fileExt);
+        const outputPath = path.join(outputDir, outputFilename);
+
+        // Support both targetSize (in MB) and quality parameters
+        const targetSize = parseFloat(req.body.targetSize); // Target size in MB
+        const quality = parseInt(req.body.quality) || 80;
+
+        try {
+          const sharp = require('sharp');
+
+          if (targetSize && !isNaN(targetSize)) {
+            // Target size-based compression
+            const targetBytes = targetSize * 1024 * 1024;
+            let currentQuality = 90;
+            let attempts = 0;
+            const maxAttempts = 10;
+
+            while (attempts < maxAttempts) {
+              const tempPath = path.join(outputDir, `temp_${Date.now()}${fileExt}`);
+
+              if (fileExt === '.png') {
+                await sharp(inputPath)
+                  .png({ quality: currentQuality, compressionLevel: 9 })
+                  .toFile(tempPath);
+              } else if (fileExt === '.jpg' || fileExt === '.jpeg') {
+                await sharp(inputPath)
+                  .jpeg({ quality: currentQuality, progressive: true })
+                  .toFile(tempPath);
+              }
+
+              const stats = fs.statSync(tempPath);
+
+              if (stats.size <= targetBytes || currentQuality <= 10) {
+                // Target achieved or minimum quality reached
+                fs.renameSync(tempPath, outputPath);
+                break;
+              } else {
+                // Reduce quality and try again
+                cleanupFile(tempPath);
+                currentQuality -= 10;
+                attempts++;
+              }
+            }
+          } else {
+            // Quality-based compression (fallback)
+            if (fileExt === '.png') {
+              await sharp(inputPath)
+                .png({ quality, compressionLevel: 9 })
+                .toFile(outputPath);
+            } else if (fileExt === '.jpg' || fileExt === '.jpeg') {
+              await sharp(inputPath)
+                .jpeg({ quality, progressive: true })
+                .toFile(outputPath);
+            } else {
+              cleanupFile(inputPath);
+              return res.status(400).json({ error: 'Unsupported image format. Only JPG, JPEG, and PNG are supported.' });
+            }
+          }
+
+          cleanupFile(inputPath);
+
+          res.set({
+            'Content-Type': `image/${fileExt.substring(1)}`,
+            'Content-Disposition': `attachment; filename="${outputFilename}"`,
+          });
+          res.sendFile(outputPath, () => {
+            cleanupFile(outputPath);
+          });
+
+        } catch (error) {
+          cleanupFile(inputPath);
+          cleanupFile(outputPath);
+          res.status(500).json({ error: 'Image compression failed: ' + error.message });
+        }
+      });
+
+      // Global error handlers to prevent server crashes
+      process.on('uncaughtException', (error) => {
+        console.error('Uncaught Exception:', error.message);
+        // Don't exit the process, just log the error
+      });
+
+      process.on('unhandledRejection', (reason, promise) => {
+        console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+        // Don't exit the process, just log the error
+      });
+
+      app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+        console.log('Note: LibreOffice errors will be logged but won\'t crash the server');
+      }); 

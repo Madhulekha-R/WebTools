@@ -1,0 +1,134 @@
+.age-calc-root {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #18191a;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.age-calc-heading-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.age-calc-heading {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.age-calc-subheading {
+  color: #b0b3b8;
+  font-size: 1.1rem;
+  font-weight: 100;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.age-calc-card {
+  background: #23272f;
+  border: 2.5px solid #00ff94;
+  border-radius: 22px;
+  padding: 30px 40px;
+  width: 400px;
+  max-width: 95%;
+  margin: 0 auto 3rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: width 0.3s ease;
+}
+
+.age-calc-card.expanded {
+  width: 600px;
+  max-width: 95%;
+}
+
+.age-calc-card-content {
+  width: 100%;
+}
+
+.age-calc-icon {
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.age-calc-form {
+  width: 100%;
+}
+
+.age-label {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.age-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #00cfff;
+  background: #18191a;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.age-calc-btn {
+  width: 100%;
+  background: linear-gradient(90deg,#00ff94,#21cbca,#00cfff);
+  color: #18191a;
+  font-weight: 700;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.age-calc-btn:hover {
+  opacity: 0.9;
+}
+
+.age-result {
+  margin-top: 22px;
+  font-size: 1.17rem;
+  color: #fff;
+}
+
+.result-label {
+  color: #00ff94;
+  font-weight: 700;
+}
+
+.age-result div {
+  margin-bottom: 5px;
+}
+
+.age-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2.5rem auto 0;
+  color: #b0b3b8;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.age-content b {
+  color: #00ff94;
+  font-weight: 600;
+}

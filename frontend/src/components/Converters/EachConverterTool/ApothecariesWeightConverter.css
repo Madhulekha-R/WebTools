@@ -1,0 +1,132 @@
+.awc-outer-box {
+  background: #18191c;
+  min-height: 100vh;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.awc-container {
+  background: #23242a;
+  max-width: 820px;            
+  width: 100%;
+  margin: 44px auto 0 auto;
+  padding: 48px 36px 44px 36px;
+  border-radius: 28px;
+  border: 2px solid #00ff94;
+  color: #d3e0fa;
+  text-align: center;
+  box-shadow: 0 0 40px #0008;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.awc-title {
+  font-size: 2.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 0.45rem;
+  margin-top: 0;
+}
+.awc-desc {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #9abdfd;
+  margin-bottom: 2rem;
+  width: 100%;
+  text-align: center;
+}
+.awc-form-group {
+  width: 100%;
+  max-width: 500px;            
+  margin: 0 auto 1.2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.awc-input,
+.awc-select {
+  width: 100%;
+  max-width: 500px;
+  min-width: 200px;
+  margin: 0 auto;
+  border-radius: 18px;
+  padding: 1rem 1.3rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  outline: none;
+  background: #18191c;
+  color: #b0caff;
+  border: 2.8px solid #00a6ff;
+  box-shadow: none;
+  transition: border-color 0.22s, background 0.2s, color 0.18s;
+}
+.awc-input:focus,
+.awc-select:focus {
+  border-color: #33c4ff;
+  background-color: #23242a;
+  color: #e5f0ff;
+}
+.awc-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.6rem auto;
+}
+.awc-result {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #78a7ff;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.awc-button-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 1.2rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.awc-button {
+  background: linear-gradient(90deg, #00ff94 0%, #00cfff 100%);
+  color: #18191c;
+  font-weight: 700;
+  font-size: 1.18rem;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 32px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+  min-width: 130px;
+  text-align: center;
+}
+.awc-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  color: #aaa;
+}
+.awc-button:hover:not(:disabled),
+.awc-button:focus:not(:disabled) {
+  background: linear-gradient(90deg, #00ccff 0%, #4cffb6 100%);
+  color: #16202b;
+  outline: none;
+  transform: scale(1.05);
+}

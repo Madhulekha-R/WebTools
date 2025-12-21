@@ -1,0 +1,208 @@
+/* Background and root */
+.age-calc-root.percent-bg {
+  min-height: 100vh;
+  padding: 40px 10px 60px 10px;
+  background: #18191a;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Page and section headings */
+.age-calc-heading {
+  text-align: center;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0.5rem auto 1.5rem auto;
+  margin-bottom: 1.5rem;
+}
+
+.percent-section-title {
+  text-align: center !important;
+  letter-spacing: 2px !important;
+  font-size: 1.25rem !important;
+  margin-top: 2.25rem !important;
+  margin-bottom: 1.2rem !important;
+}
+
+/* Card layout for each calculator block */
+.percent-card {
+  margin: 0 auto 1.9rem auto;
+  background: #23272f;
+  border: 2.5px solid #00ff94;
+  border-radius: 22px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
+  padding: 28px 40px;
+  width: 100%;
+  max-width: 850px;
+  transition: width 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Align row of form input/labels horizontally and center using flex */
+.percent-main-form,
+.percent-each-form {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.percent-main-row,
+.percent-common-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.age-input.percent-input {
+  width: 130px;
+  max-width: 150px;
+  min-width: 58px;
+  padding: 7px 10px;
+  font-size: 1.12rem;
+  border-radius: 7px;
+  border: 1.7px solid #00cfff;
+  background: #18191a;
+  color: #fff;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  transition: border 0.18s;
+}
+
+.age-input.percent-input:focus {
+  outline: none;
+  border-color: #00ff94;
+}
+
+.percent-label-phrase,
+.percent-of-lbl,
+.percent-eq-lbl {
+  color: #c6f6ef;
+  font-size: 1.08rem;
+  font-weight: 550;
+  text-align: center;
+  min-width: 45px;
+}
+
+/* Button strip below input row */
+.percent-btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 13px;
+  width: 100%;
+}
+
+.percent-clear-btn {
+  background: #6c757d !important;
+  color: #fff !important;
+  font-weight: 690;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: none;
+}
+
+.percent-main-btn {
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  color: #18191a;
+  font-weight: 700;
+  font-size: 1.02rem;
+  border-radius: 7px;
+  border: none;
+  transition: opacity 0.21s;
+}
+
+.percent-main-btn:hover {
+  opacity: 0.94;
+}
+
+.age-result,
+.result-label {
+  color: #fff;
+}
+
+.result-label {
+  color: #00ff94;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+@media (max-width: 700px) {
+  .percent-card {
+    padding: 16px 6vw 16px 6vw;
+  }
+
+  .percent-main-row,
+  .percent-common-row {
+    gap: 7px;
+    font-size: 0.98rem;
+  }
+
+  .age-input.percent-input {
+    max-width: 88px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .percent-main-row,
+  .percent-common-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+  }
+
+  .percent-card {
+    padding: 13px 1vw 14px 1vw;
+  }
+
+  .age-calc-heading {
+    font-size: 1.23rem;
+  }
+
+  .percent-section-title {
+    font-size: 1.07rem !important;
+  }
+}
+
+.percent-description {
+  margin: 48px auto 0 auto;
+  padding: 35px 30px 22px 30px;
+  color: #efe;
+  font-size: 1.12rem;
+  font-family: inherit;
+  line-height: 1.62;
+  max-width: 900px;
+}
+
+.percent-description h2 {
+  color: #00ff94;
+  font-size: 1.36rem;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+.percent-description b {
+  color: #2efdaf;
+}
+
+.percent-description div,
+.percent-description p {
+  color: #d6fce9;
+}
+
+.percent-description .monospace {
+  font-family: 'Consolas', 'monospace';
+  color: #83eee9;
+}

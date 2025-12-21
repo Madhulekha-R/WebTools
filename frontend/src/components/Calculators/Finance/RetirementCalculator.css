@@ -1,0 +1,56 @@
+/* Retirement Calculator specific styles */
+.retirement-tab-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+.retirement-tab-btn {
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.retirement-tab-btn:hover {
+    background: rgba(0, 255, 148, 0.1);
+    border-color: rgba(0, 255, 148, 0.3);
+    transform: translateY(-2px);
+}
+
+.retirement-tab-btn.active {
+    background: linear-gradient(135deg, #00ff94, #00cfff);
+    border-color: transparent;
+    color: #18191a;
+    box-shadow: 0 4px 15px rgba(0, 255, 148, 0.3);
+}
+
+.retirement-section-header {
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    color: #fff;
+    padding: 12px 20px;
+    margin: 20px -20px 15px -20px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-left: 4px solid #00ff94;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .retirement-tab-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .retirement-tab-btn {
+        font-size: 0.9rem;
+        padding: 12px 15px;
+    }
+}

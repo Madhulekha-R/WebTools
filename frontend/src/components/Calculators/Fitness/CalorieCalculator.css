@@ -1,0 +1,79 @@
+@import './BMICalculator.css';
+
+/* Calorie Calculator specific styles */
+
+.calorie-expanded {
+    width: 500px;
+    max-width: 95%;
+}
+
+.calorie-expanded.with-results {
+    width: 900px;
+    max-width: 95%;
+}
+
+.calorie-results {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #00cfff;
+}
+
+.calorie-section {
+    margin-bottom: 25px;
+}
+
+.calorie-section-title {
+    color: #00cfff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.zigzag-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.zigzag-table thead {
+    background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+}
+
+.zigzag-table th {
+    padding: 12px;
+    text-align: left;
+    color: #18191a;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.zigzag-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #00cfff;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.zigzag-table tbody tr:hover {
+    background: rgba(0, 207, 255, 0.1);
+}
+
+.zigzag-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 950px) {
+    .calorie-expanded.with-results {
+        width: 95%;
+    }
+
+    .zigzag-table {
+        font-size: 0.9rem;
+    }
+
+    .zigzag-table th,
+    .zigzag-table td {
+        padding: 8px;
+    }
+}

@@ -1,0 +1,221 @@
+.subnet-calc-root {
+  min-height: 100vh;
+  padding: 40px 20px 20px 20px;
+  background: #18191a;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.subnet-calc-heading {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00ff94, #21cbca, #00cfff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: -0.5rem;
+}
+
+.subnet-calc-desc {
+  max-width: 1000px;
+  margin: 0 auto 2rem auto;
+  color: #b0b3b8;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.subnet-calc-section {
+  font-size: 1.36rem;
+  color: #70f4ca;
+  font-weight: 600;
+  margin-left: 450px;
+}
+
+.subnet-calc-card {
+  background: #23272f;
+  border: 2.5px solid #00ff94;
+  border-radius: 22px;
+  padding: 30px 40px;
+  max-width: 600px;
+  margin: 0 auto 2.2rem auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.subnet-calc-form {
+  width: 100%;
+}
+
+.subnet-radio-row {
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.subnet-radio-row label {
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+.subnet-form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.subnet-form-row label {
+  color: #fff;
+  min-width: 100px;
+  font-weight: 600;
+}
+
+.subnet-form-row input,
+.subnet-form-row select {
+  flex: 1;
+  background: #18191a;
+  color: #fff;
+  border: 1px solid #00cfff;
+  border-radius: 8px;
+  font-size: 1.02rem;
+  padding: 9px 11px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.subnet-form-row select {
+  cursor: pointer;
+}
+
+.subnet-btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.subnet-calc-btn {
+  width: 48%;
+  background: linear-gradient(90deg,#00ff94,#21cbca,#00cfff);
+  color: #18191a;
+  font-weight: 700;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.subnet-calc-btn:hover {
+  opacity: 0.91;
+}
+
+.subnet-clear-btn {
+  width: 48%;
+  background: #6c757d;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subnet-clear-btn:hover {
+  background: #5a6268;
+}
+
+.subnet-result {
+  margin-top: 22px;
+  font-size: 1.14rem;
+  color: #fff;
+  border-top: 1.5px solid #00ff94;
+  padding-top: 15px;
+}
+
+.subnet-result strong {
+  color: #00ff94;
+  font-weight: 700;
+}
+
+.subnet-calc-content {
+  max-width: 900px;
+  margin: 3rem auto 1.5rem auto;
+  color: #b0b3b8;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.subnet-table-section {
+  max-width: 900px;
+  margin: 3rem auto 0 auto;
+  color: #b0b3b8;
+}
+
+.subnet-table-title {
+  font-size: 1.14rem;
+  color: #00ff94;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.subnet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background: #22242b;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.subnet-table th {
+  background: #3b5998;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 11px;
+  text-align: center;
+}
+
+.subnet-table td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  text-align: center;
+  color: #fff;
+}
+
+.subnet-table tr:nth-child(even) {
+  background: #2a2e35;
+}
+
+.subnet-table tr:last-child td {
+  border-bottom: none;
+}
+
+.class-divider {
+  color: #222 !important;
+  text-align: center !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  background: #3b5998;
+}
+.class-divider td,
+.class-divider th {
+  text-align: center !important;
+  padding: 9px 0 !important;
+  background: #3b5998;
+}
