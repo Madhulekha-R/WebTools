@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   preview: {
-    host: true,
+    host: true, // Allow all hosts for Railway
     port: process.env.PORT || 4173,
     strictPort: false
   }
