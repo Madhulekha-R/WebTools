@@ -4,9 +4,12 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: true
+  },
   preview: {
-    host: true, // Allow all hosts for Railway
-    port: process.env.PORT || 4173,
+    host: true,
+    port: parseInt(process.env.PORT) || 4173,
     strictPort: false
   }
 })
