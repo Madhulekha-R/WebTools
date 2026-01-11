@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { API_BASE_URL } from '../../../config/api';
 import "./ImageCompressionTool.css";
 
 const ImageCompressionTool = () => {
@@ -33,7 +34,7 @@ const ImageCompressionTool = () => {
         formData.append("targetSize", targetSize); // Send target size to backend
 
         try {
-            const response = await fetch("http://localhost:5000/api/convert/compress-image", {
+            const response = await fetch(`${API_BASE_URL}/api/convert/compress-image`, {
                 method: "POST",
                 body: formData,
             });

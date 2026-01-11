@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { API_BASE_URL } from '../../../config/api';
 import "./PdfCompressionTool.css";
 
 const PdfCompressionTool = () => {
@@ -28,7 +29,7 @@ const PdfCompressionTool = () => {
     formData.append("targetSize", targetSize); // Send target size to backend
 
     try {
-      const response = await fetch("http://localhost:5000/api/convert/compress-pdf", {
+      const response = await fetch(`${API_BASE_URL}/api/convert/compress-pdf`, {
         method: "POST",
         body: formData,
       });

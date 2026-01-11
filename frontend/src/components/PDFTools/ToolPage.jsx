@@ -8,6 +8,7 @@ import GetAppIcon from '@mui/icons-material/GetApp';
 import ErrorIcon from '@mui/icons-material/Error';
 import CircularProgress from '@mui/material/CircularProgress';
 import { tools } from './PDFTools';
+import { API_BASE_URL } from '../../config/api';
 import './ToolPage.css';
 
 const conversionEndpoints = {
@@ -258,7 +259,7 @@ export default function ToolPage() {
         };
         xhr.onerror = () => reject(new Error('Network error occurred'));
         xhr.ontimeout = () => reject(new Error('Request timed out'));
-        xhr.open('POST', `http://localhost:5000${conversionConfig.endpoint}`);
+        xhr.open('POST', `${API_BASE_URL}${conversionConfig.endpoint}`);
         xhr.responseType = 'blob';
         xhr.timeout = 300000;
         xhr.send(formData);

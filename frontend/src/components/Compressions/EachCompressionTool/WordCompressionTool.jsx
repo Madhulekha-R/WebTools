@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { API_BASE_URL } from '../../../config/api';
 import "./WordCompressionTool.css";
 
 const WordCompressionTool = () => {
@@ -28,7 +29,7 @@ const WordCompressionTool = () => {
     formData.append("targetSize", targetSize);
 
     try {
-      const response = await fetch("http://localhost:5000/api/convert/compress-word", {
+      const response = await fetch(`${API_BASE_URL}/api/convert/compress-word`, {
         method: "POST",
         body: formData,
       });
