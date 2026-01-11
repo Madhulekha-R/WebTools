@@ -19,14 +19,10 @@ services:
     healthCheckPath: /
 
   # Frontend Static Site
-  - type: web
+  - type: static
     name: webtools-frontend
-    runtime: static
-    plan: free
-    branch: main
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
         sync: false
