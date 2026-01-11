@@ -3,7 +3,6 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config();
 
 const libre = require('libreoffice-convert');
 const { fromPath } = require('pdf2pic');
@@ -15,8 +14,13 @@ const pdfParse = require('pdf-parse');
 const Diff = require('diff');
 const archiver = require('archiver');
 
-const app = express();
+// Capture Render's PORT before dotenv can override it
 const PORT = process.env.PORT || 5000;
+
+// Load other environment variables from .env (but PORT is already set)
+require('dotenv').config();
+
+const app = express();
 
 app.use(cors({
   origin: 'http://localhost:5173',
