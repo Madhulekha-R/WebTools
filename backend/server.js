@@ -14,13 +14,13 @@ const pdfParse = require('pdf-parse');
 const Diff = require('diff');
 const archiver = require('archiver');
 
-// Only load .env file in development (not in production/Render)
+// Capture Render's PORT before anything else
+const PORT = process.env.PORT || 5000;
+
+// Only load .env in development (not in production on Render)
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
-
-// Use Render's PORT or default to 5000 for local development
-const PORT = process.env.PORT || 5000;
 
 const app = express();
 
