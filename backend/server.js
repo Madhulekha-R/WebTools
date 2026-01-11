@@ -31,6 +31,23 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Health check endpoints for Render
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    message: 'WebTools Backend API is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'healthy',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 const uploadDir = path.join(__dirname, 'uploads');
 const outputDir = path.join(__dirname, 'output');
 [uploadDir, outputDir].forEach(dir => {
