@@ -16,7 +16,7 @@ const Diff = require('diff');
 const archiver = require('archiver');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -946,8 +946,8 @@ process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
   console.log('✅ All PDF Tools - FREE and Local!');
   console.log('✅ LibreOffice for Office conversions');
   console.log('✅ PDFKit for JPG to PDF');
