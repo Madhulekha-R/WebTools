@@ -90,15 +90,51 @@ Visit `http://localhost:3000`
 
 ## 🚢 Deployment
 
-### Railway Deployment
+### Render Deployment (Recommended)
 
-1. Push code to GitHub
-2. Connect Railway to your GitHub repo
-3. Create two services:
-   - **Backend**: Root directory `/backend`
-   - **Frontend**: Root directory `/frontend`
-4. Set environment variables in Railway dashboard
-5. Deploy!
+This project is configured for easy deployment on Render using the included `render.yaml` file.
+
+**Prerequisites:**
+- GitHub account
+- Render account (free at render.com)
+
+**Steps:**
+
+1. **Push code to GitHub** (if not already done)
+   ```bash
+   git push origin main
+   ```
+
+2. **Create Render Account**
+   - Go to https://render.com
+   - Sign up with GitHub
+
+3. **Deploy from Blueprint**
+   - Click "New" → "Blueprint"
+   - Connect your GitHub repository: `Madhulekha-R/WebTools`
+   - Render will auto-detect `render.yaml`
+   - Click "Apply"
+
+4. **Set Environment Variables**
+   
+   After services are created, set these variables:
+   
+   **Backend Service:**
+   - `NODE_ENV` = `production`
+   - `PORT` = `5000`
+   - `FRONTEND_URL` = (copy your frontend URL from Render)
+   
+   **Frontend Service:**
+   - `VITE_API_URL` = (copy your backend URL from Render)
+
+5. **Redeploy Services**
+   - After setting environment variables, manually redeploy both services
+   - Backend: Click "Manual Deploy" → "Deploy latest commit"
+   - Frontend: Click "Manual Deploy" → "Deploy latest commit"
+
+6. **Access Your Website**
+   - Frontend URL: `https://webtools-frontend.onrender.com`
+   - Backend API: `https://webtools-backend.onrender.com`
 
 ### Environment Variables for Production
 
@@ -106,13 +142,24 @@ Visit `http://localhost:3000`
 ```
 PORT=5000
 NODE_ENV=production
-FRONTEND_URL=https://your-frontend.railway.app
+FRONTEND_URL=https://webtools-frontend.onrender.com
 ```
 
 **Frontend:**
 ```
-VITE_API_URL=https://your-backend.railway.app
+VITE_API_URL=https://webtools-backend.onrender.com
 ```
+
+### Custom Domain (Optional)
+
+1. In Render dashboard, go to your frontend service
+2. Click "Settings" → "Custom Domain"
+3. Add your domain (e.g., `webtoolgenius.com`)
+4. Update DNS records at your domain registrar (GoDaddy):
+   - Type: CNAME
+   - Name: www
+   - Value: (provided by Render)
+5. SSL certificate will be automatically provisioned
 
 ## 📝 License
 
